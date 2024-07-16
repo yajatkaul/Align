@@ -22,13 +22,13 @@ const cartSchema = new Schema(
       type: String,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-    },
     color: {
       type: String,
-      required: true,
+      required: false,
+    },
+    type: {
+      type: String,
+      required: false,
     },
     name: {
       type: String,

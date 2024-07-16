@@ -3,8 +3,11 @@ import React, { createContext, useContext, useState, ReactNode } from "react";
 interface DataProp {
   customerName: string;
   companyName: string;
-  phoneNumber: string; // Assuming phoneNumber is a string based on your interface
+  phoneNumber: string;
+  location: string;
+  email: string;
   color: string;
+  type: string;
 }
 
 interface ContextType {
@@ -17,9 +20,12 @@ const initialContext: ContextType = {
     customerName: "",
     companyName: "",
     phoneNumber: "",
+    location: "",
+    email: "",
     color: "",
+    type: "",
   },
-  setDetails: () => {}, // Placeholder function
+  setDetails: () => {},
 };
 
 export const CustomerContext = createContext<ContextType>(initialContext);
@@ -43,7 +49,10 @@ export const CustomerContextProvider = ({
     customerName: "",
     companyName: "",
     phoneNumber: "",
+    location: "",
+    email: "",
     color: "",
+    type: "",
   });
   return (
     <CustomerContext.Provider value={{ details, setDetails }}>

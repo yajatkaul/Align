@@ -88,11 +88,11 @@ const Customise = () => {
                 <input
                   type="text"
                   placeholder="Location"
-                  value={details?.phoneNumber}
+                  value={details?.location}
                   onChange={(e) =>
                     setDetails({
                       ...details,
-                      phoneNumber: e.target.value,
+                      location: e.target.value,
                     })
                   }
                   className="input input-bordered w-full max-w-xs"
@@ -104,7 +104,7 @@ const Customise = () => {
                   onChange={(e) =>
                     setDetails({
                       ...details,
-                      phoneNumber: e.target.value,
+                      email: e.target.value,
                     })
                   }
                   className="input input-bordered w-full max-w-xs"
@@ -122,13 +122,6 @@ const Customise = () => {
                     <option>Owner</option>
                     <option>Designer</option>
                   </select>
-                  <img
-                    src={`${details.color}.png`}
-                    alt="Color"
-                    className={`w-[50px] h-[50px] rounded-[50%] ${
-                      details.color ? "inline" : "hidden"
-                    }`}
-                  />
                 </div>
               </div>
 
