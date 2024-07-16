@@ -2,7 +2,7 @@ const Header = () => {
   return (
     <>
       <div className="fixed top-0 w-screen">
-        <div className="flex bg-[#DFD3C3] h-[90px] md:justify-start justify-center items-center md:items-start">
+        <div className="flex bg-[#DFD3C3] h-[100px] md:justify-start justify-center items-center md:items-start">
           <a href="/">
             <img src="/Logo.png" className="md:hidden h-[70px]" />
           </a>

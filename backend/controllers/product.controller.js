@@ -26,7 +26,9 @@ export const sendCategories = async (req, res) => {
 
 export const getProducts = async (req, res) => {
   try {
-    const products = await Product.find();
+    const query = req.params.id;
+
+    const products = await Product.find({ type: query });
 
     res.status(200).json(products);
   } catch (err) {
@@ -39,6 +41,7 @@ export const sendProducts = async (req, res) => {
   const data = req.body;
   const newProduct = new Product({
     name: data.name,
+    type: data.type,
     image: data.image,
   });
 

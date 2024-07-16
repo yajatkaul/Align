@@ -14,6 +14,6 @@ router.post("/category", sendCategories);
 router.get("/category/get", getCategories);
 
 router.post("/product", sendProducts);
-router.get("/product/get", getProducts);
+router.get("/product/:id", getProducts);
 
 export default router;

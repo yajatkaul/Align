@@ -14,6 +14,18 @@ const cartSchema = new Schema(
       type: Number,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
     color: {
       type: String,
       required: true,

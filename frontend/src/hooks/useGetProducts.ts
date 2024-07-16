@@ -1,27 +1,29 @@
+// @ts-nocheck
 import { useEffect, useState } from "react";
+import { useProductContext } from "../context/ProductContext";
 
 const useGetProducts = () => {
-  const [products, setProducts] = useState();
+  const [product, setProduct] = useState(null);
+  const { products } = useProductContext();
 
   useEffect(() => {
-    const getCategories = async () => {
+    const getCategories = async (products: any) => {
       try {
-        const res = await fetch("/api/order/product/get");
-
+        const res = await fetch(`/api/order/product/${products}`);
         const data = await res.json();
         if (data.err) {
           throw new Error(data.err);
         }
-        setProducts(data);
+        setProduct(data);
       } catch (err) {
         console.log(err);
       }
     };
 
-    getCategories();
-  }, []);
+    getCategories(products);
+  }, [products]);
 
-  return { products };
+  return { product };
 };
 
 export default useGetProducts;

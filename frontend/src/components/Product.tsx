@@ -46,9 +46,15 @@ const Product = ({ pic, name }: ProductProps) => {
   }, [data]);
 
   return (
-    <div className="flex">
-      <div className="flex flex-col">
-        <img src={pic} alt="image" />
+    <div className="flex items-center">
+      <div className="flex flex-col items-center mt-[30px]">
+        <div className="w-[300px] h-[200px] overflow-hidden">
+          <img
+            src={pic}
+            alt="image"
+            className="w-full h-full object-scale-down"
+          />
+        </div>
         <a>{name}</a>
         <input
           type="number"
@@ -56,7 +62,7 @@ const Product = ({ pic, name }: ProductProps) => {
           value={inputs.count}
           min="1"
           onChange={(e) => setInputs({ ...inputs, count: e.target.value })}
-          className="input input-bordered w-full max-w-xs"
+          className="input input-bordered w-full max-w-[250px]"
         />
       </div>
       <div className="flex flex-col justify-center">
