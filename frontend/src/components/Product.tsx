@@ -46,7 +46,7 @@ const Product = ({ pic, name }: ProductProps) => {
   }, [data]);
 
   return (
-    <div className="flex items-center">
+    <div className="flex md:flex-row flex-col items-center">
       <div className="flex flex-col items-center mt-[30px]">
         <div className="w-[300px] h-[200px] overflow-hidden">
           <img
