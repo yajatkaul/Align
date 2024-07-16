@@ -65,7 +65,7 @@ const Product = ({ pic, name }: ProductProps) => {
           className="input input-bordered w-full max-w-[250px]"
         />
       </div>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center ml-[10px]">
         <label>Opening Size</label>
         <div className="flex flex-col">
           <input

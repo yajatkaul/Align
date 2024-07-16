@@ -8,7 +8,7 @@ export const useProductContext = () => {
 };
 
 export const ProductContextProvider = ({ children }: any) => {
-  const [products, setProducts] = useState("");
+  const [products, setProducts] = useState(localStorage.getItem("context"));
   return (
     <ProductContext.Provider value={{ products, setProducts }}>
       {children}

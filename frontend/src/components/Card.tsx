@@ -12,22 +12,23 @@ const Card = ({ name, pic }: CardProps) => {
 
   const filteredPage = () => {
     setProducts(name);
+    localStorage.setItem("context", name);
   };
 
   return (
-    <div className="flex flex-col hover:bg-slate-100/40 items-center mt-[30px]">
+    <div className="flex flex-col items-center mt-[30px] p-4 rounded-xl group hover:bg-[#ffffff23] transition-opacity duration-300 ease-in-out">
       <div className="w-[400px] h-[200px] overflow-hidden">
         <img
           src={pic}
           alt="image"
-          className="w-full h-full object-scale-down"
+          className="w-full h-full object-scale-down transition-opacity duration-300 ease-in-out group-hover:opacity-80"
         />
       </div>
 
       <p className="text-[20px]">{name}</p>
 
       <Link to="/select" onClick={filteredPage}>
-        <button className="btn btn-wide">Choose</button>
+        <button className="btn btn-wide text-[20px]">Choose</button>
       </Link>
     </div>
   );
