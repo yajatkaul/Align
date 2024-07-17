@@ -13,22 +13,21 @@ const Product = ({ pic, name, type }: ProductProps) => {
   const { sendOrder } = useOrder();
   const { data } = useDataContext();
   const { details } = useCustomerContext();
-  const [color, setColor] = useState(null);
 
   const [inputs, setInputs] = useState({
-    color: color,
+    color: "",
     name: name,
     count: "",
     width: "",
     height: "",
   });
 
-  const handleColorChange = (event: any) => {
-    setColor(event.target.value);
+  const handleColorChange = (e: any) => {
+    setInputs({ ...inputs, color: e.target.value });
   };
 
   const sendData = () => {
-    if (!inputs.count || !inputs.width || !inputs.height || !color) {
+    if (!inputs.count || !inputs.width || !inputs.height || !inputs?.color) {
       return;
     } else {
       sendOrder({
@@ -38,7 +37,7 @@ const Product = ({ pic, name, type }: ProductProps) => {
         location: details?.location,
         email: details?.email,
         type: details?.type,
-        color: color,
+        color: inputs.color,
         name: inputs.name,
         count: inputs.count,
         width: inputs.width,
@@ -85,9 +84,9 @@ const Product = ({ pic, name, type }: ProductProps) => {
             <option>Space Grey</option>
             <option>Champagne</option>
           </select>
-          {color ? (
+          {inputs.color ? (
             <img
-              src={`${color}.png`}
+              src={`${inputs.color}.png`}
               className="rounded-[50%] w-[40px] h-[40px] mt-[4px]"
             />
           ) : (
