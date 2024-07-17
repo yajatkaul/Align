@@ -6,26 +6,29 @@ import { useCustomerContext } from "../context/CustomerContext";
 interface ProductProps {
   name: string;
   pic: string;
+  type: string;
 }
 
-const Product = ({ pic, name }: ProductProps) => {
+const Product = ({ pic, name, type }: ProductProps) => {
   const { sendOrder } = useOrder();
   const { data } = useDataContext();
   const { details } = useCustomerContext();
+  const [color, setColor] = useState(null);
 
   const [inputs, setInputs] = useState({
-    customerName: details?.customerName,
-    companyName: details?.companyName,
-    phoneNumber: details?.phoneNumber,
-    color: details?.color,
+    color: color,
     name: name,
     count: "",
     width: "",
     height: "",
   });
 
+  const handleColorChange = (event: any) => {
+    setColor(event.target.value);
+  };
+
   const sendData = () => {
-    if (!inputs.count || !inputs.width || !inputs.height) {
+    if (!inputs.count || !inputs.width || !inputs.height || !color) {
       return;
     } else {
       sendOrder({
@@ -35,7 +38,7 @@ const Product = ({ pic, name }: ProductProps) => {
         location: details?.location,
         email: details?.email,
         type: details?.type,
-        color: details?.color,
+        color: color,
         name: inputs.name,
         count: inputs.count,
         width: inputs.width,
@@ -67,6 +70,30 @@ const Product = ({ pic, name }: ProductProps) => {
           onChange={(e) => setInputs({ ...inputs, count: e.target.value })}
           className="input input-bordered w-full max-w-[250px]"
         />
+        <div className="flex gap-3 mt-[5px]">
+          <select
+            className="select select-bordered w-full max-w-xs"
+            onChange={handleColorChange}
+          >
+            <option disabled selected>
+              Color
+            </option>
+            <option>Brush Gold</option>
+            <option>Black Noir </option>
+            <option>Nickel Brush</option>
+            <option>Cocoa Brown</option>
+            <option>Space Grey</option>
+            <option>Champagne</option>
+          </select>
+          {color ? (
+            <img
+              src={`${color}.png`}
+              className="rounded-[50%] w-[40px] h-[40px] mt-[4px]"
+            />
+          ) : (
+            ""
+          )}
+        </div>
       </div>
       <div className="flex flex-col justify-center ml-[10px]">
         <label>Opening Size</label>

@@ -6,7 +6,6 @@ interface DataProp {
   phoneNumber: string;
   location: string;
   email: string;
-  color: string;
   type: string;
 }
 
@@ -22,7 +21,6 @@ const initialContext: ContextType = {
     phoneNumber: "",
     location: "",
     email: "",
-    color: "",
     type: "",
   },
   setDetails: () => {},
@@ -51,7 +49,6 @@ export const CustomerContextProvider = ({
     phoneNumber: "",
     location: "",
     email: "",
-    color: "",
     type: "",
   });
   return (
