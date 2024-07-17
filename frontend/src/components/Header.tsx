@@ -8,7 +8,7 @@ const Header = () => {
           <Link to="/">
             <img src="/Logo.png" className="md:hidden h-[70px]" />
           </Link>
-          <div className=" hidden md:flex flex-col">
+          <div className=" hidden md:flex flex-col mt-[5px]">
             <Link to="/">
               <img src="/Logo.png" className="h-[80px] mt-[5px] ml-[10px]" />
             </Link>
