@@ -22,9 +22,6 @@ const DetailCard = ({ name, type }: ProductProps) => {
   });
 
   const limiter = () => {
-    if (parseInt(inputs.width) > 3600) {
-      setInputs({ ...inputs, width: "3600" });
-    }
     if (parseInt(inputs.height) > 3600) {
       setInputs({ ...inputs, height: "3600" });
     }
@@ -112,12 +109,12 @@ const DetailCard = ({ name, type }: ProductProps) => {
           <option disabled selected>
             Glass
           </option>
-          <option>Brush Gold</option>
-          <option>Black Noir </option>
+          <option>Clear Glass</option>
+          <option>Tinted Glass</option>
           <option>Nickel Brush</option>
-          <option>Cocoa Brown</option>
-          <option>Space Grey</option>
-          <option>Champagne</option>
+          <option>Figured Glass</option>
+          <option>Metallic Mesh</option>
+          <option>Fabric</option>
         </select>
         <input
           type="number"
