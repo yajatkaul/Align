@@ -3,9 +3,19 @@ import Cart from "../models/cart.model.js";
 export const sendCard = async (req, res) => {
   try {
     const details = req.body;
-    console.log(details);
 
-    if (!details.name || !details.width || !details.height || !details.count) {
+    if (
+      !details.name ||
+      !details.width ||
+      !details.height ||
+      !details.glass ||
+      !details.customerName ||
+      !details.companyName ||
+      !details.phoneNumber ||
+      !details.location ||
+      !details.email ||
+      !details.type
+    ) {
       return res.status(400).json("Fill all the details");
     }
 

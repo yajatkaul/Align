@@ -24,7 +24,11 @@ const cartSchema = new Schema(
     },
     color: {
       type: String,
-      required: false,
+      required: true,
+    },
+    glass: {
+      type: String,
+      required: true,
     },
     type: {
       type: String,
@@ -39,10 +43,6 @@ const cartSchema = new Schema(
       required: true,
     },
     height: {
-      type: String,
-      required: true,
-    },
-    count: {
       type: String,
       required: true,
     },
