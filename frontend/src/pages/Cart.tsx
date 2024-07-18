@@ -41,10 +41,6 @@ const Cart = () => {
     navigate("/");
   };
 
-  console.log(cart?.items);
-  if (cart?.items.length === 0) {
-    console.log("empty");
-  }
   return (
     <>
       <div className="flex flex-col h-screen bg-cover bg-center bg-no-repeat bg-[url('/bg.jpg')]">
@@ -64,7 +60,7 @@ const Cart = () => {
               />
             );
           })}
-          {cart?.items.length === 0 ? (
+          {(cart?.items && cart.items.length === 0) || !cart?.items ? (
             <p className="text-[30px] flex flex-col justify-center items-center w-full">
               Cart is empty
               <Link to="/">

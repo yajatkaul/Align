@@ -68,7 +68,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
 
   return (
     <>
-      <div className="flex md:flex-row flex-col w-full">
+      <div className="flex md:flex-row flex-col">
         <div className="flex md:min-w-[200px]">
           <select
             className="select select-bordered w-full max-w-[200xpx]"
@@ -125,7 +125,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
           min="1"
           max="3600"
           onChange={(e) => setInputs({ ...inputs, width: e.target.value })}
-          className="input input-bordered w-full max-w-[150px]"
+          className="input input-bordered w-full max-w-[150px] text-[14px]"
         />
         <input
           type="number"
@@ -134,7 +134,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
           min="1"
           max="3600"
           onChange={(e) => setInputs({ ...inputs, height: e.target.value })}
-          className="input input-bordered w-full max-w-[150px]"
+          className="input input-bordered w-full max-w-[150px] text-[14px]"
         />
       </div>
     </>
