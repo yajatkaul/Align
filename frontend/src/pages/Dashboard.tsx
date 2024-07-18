@@ -9,9 +9,9 @@ const Dashboard = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen bg-cover bg-center bg-[url('/bg.jpg')]">
         <Header />
-        <div className="flex-1 mt-[100px]">
+        <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')]">
           {orders?.map((item) => {
             return (
               <OrderCard
