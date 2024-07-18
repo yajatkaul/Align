@@ -21,6 +21,7 @@ const Dashboard = () => {
                 time={item.createdAt}
                 phoneNumber={item.phoneNumber}
                 data={item.items}
+                type={item.type}
               />
             );
           })}

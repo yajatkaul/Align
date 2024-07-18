@@ -22,6 +22,19 @@ const Cart = () => {
 
   const submit = async (e) => {
     e.preventDefault();
+
+    if (
+      !details.companyName ||
+      !details.location ||
+      !details.phoneNumber ||
+      !details.type
+    ) {
+      return toast.error("Fill all the details");
+    }
+
+    if (details.phoneNumber < 1000000000) {
+      return toast.error("Enter a valid 10 digit number");
+    }
     await order(details);
     toast.success("Ordered Successfully");
 
@@ -36,7 +49,7 @@ const Cart = () => {
     <>
       <div className="flex flex-col h-screen bg-cover bg-center bg-no-repeat bg-[url('/bg.jpg')]">
         <Header />
-        <div className="flex flex-1 mt-[100px] flex-wrap">
+        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center">
           {cart?.items?.map((item) => {
             return (
               <Item
@@ -61,7 +74,7 @@ const Cart = () => {
           ) : (
             <>
               <button
-                className="btn btn-wide w-full"
+                className="btn btn-wide max-w-[800px]"
                 onClick={() =>
                   document.getElementById("my_modal_2").showModal()
                 }
