@@ -35,14 +35,14 @@ const Requirement = () => {
             <>
               <button
                 onClick={handleLogout}
-                className="btn fixed right-[20px] bottom-[200px] w-[50px] h-[50px] md:hidden"
+                className="btn fixed right-[20px] bottom-[100px] w-[50px] h-[50px] md:hidden"
               >
                 <div>
                   <IoMdLogOut className="w-[40px] h-[40px]" />
                 </div>
               </button>
               <Link to="/cart">
-                <button className="btn fixed right-[20px] bottom-[130px] w-[50px] h-[50px] md:hidden">
+                <button className="btn fixed right-[20px] bottom-[30px] w-[50px] h-[50px] md:hidden">
                   <div>
                     <CiShoppingCart className="w-[50px] h-[50px]" />
                   </div>
@@ -52,7 +52,7 @@ const Requirement = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="btn fixed right-[20px] bottom-[130px] w-[50px] h-[50px] md:hidden">
+                <button className="btn fixed right-[20px] bottom-[30px] w-[50px] h-[50px] md:hidden">
                   <div>
                     <CiLogin className="w-[50px] h-[50px]" />
                   </div>
