@@ -75,7 +75,7 @@ const Cart = () => {
                   document.getElementById("my_modal_2").showModal()
                 }
               >
-                Order
+                Raise Inquiry
               </button>
             </>
           )}
@@ -120,10 +120,14 @@ const Cart = () => {
                   <option disabled selected>
                     Type
                   </option>
-                  <option>Builder</option>
-                  <option>Greedo</option>
+                  <option>Interior Designer</option>
+                  <option>Individual Owner/Consumer</option>
+                  <option>Architect</option>
+                  <option>PMC</option>
+                  <option>Vendor</option>
+                  <option>Other</option>
                 </select>
-                <button className="btn btn-wide w-full">Place Order</button>
+                <button className="btn btn-wide w-full">Raise Inquiry</button>
               </form>
             </div>
             <form method="dialog" className="modal-backdrop">

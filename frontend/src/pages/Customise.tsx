@@ -24,7 +24,7 @@ const Customise = () => {
     event.preventDefault();
 
     toast.success(
-      "Added to cart(I you didnt fill all the item details it wont be added)"
+      "Added to cart(If you didnt fill all the item details it wont be added)"
     );
 
     await submit();

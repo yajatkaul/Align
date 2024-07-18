@@ -46,13 +46,7 @@ export const signup = async (req, res) => {
 
 //Function to check the details if they are correct or not
 async function signupChecks({ userName, email, password, confirmPassword }) {
-  const userCheck = await User.findOne({ userName });
-
   const emailCheck = await User.findOne({ email });
-
-  if (userCheck) {
-    return { message: "Username taken" };
-  }
 
   if (emailCheck) {
     return { message: "Email is already in use" };
@@ -95,14 +89,18 @@ export const login = async (req, res) => {
   }
 
   //Request payload
-  const { userName, password } = req.body;
+  const { email, password } = req.body;
 
-  if (!userName || !password) {
+  if (!email || !password) {
     return res.status(400).json({ message: "Please fill all the fields" });
   }
 
   //Search for the user and gets the details
-  const user = await User.findOne({ userName });
+  const user = await User.findOne({ email });
+
+  if (!user) {
+    return res.status(400).json({ err: "Incorrect Credentials" });
+  }
 
   //Decrypt and compare the password -- returns true or fals
   const isPasswordCorrect = await bcrypt.compare(

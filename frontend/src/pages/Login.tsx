@@ -4,13 +4,17 @@ import useLogin from "../hooks/useLogin";
 
 const Login = () => {
   const [inputs, setInputs] = useState({
-    userName: "",
+    email: "",
     password: "",
   });
   const { loading, handelLogin } = useLogin();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
+
+    if (!inputs.email || !inputs.password) {
+      return toast.error("Fill all the fields!");
+    }
     await handelLogin(inputs);
   };
 
@@ -39,12 +43,12 @@ const Login = () => {
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
               </svg>
               <input
-                type="text"
+                type="email"
                 className="grow"
-                placeholder="Username"
-                value={inputs.userName}
+                placeholder="Email"
+                value={inputs.email}
                 onChange={(e) =>
-                  setInputs({ ...inputs, userName: e.target.value })
+                  setInputs({ ...inputs, email: e.target.value })
                 }
               />
             </label>
