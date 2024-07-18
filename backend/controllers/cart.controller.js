@@ -115,9 +115,13 @@ export const order = async (req, res) => {
 
     const cart = await UserCart.findOne({ user: userId });
 
+    const cartToAdd = await UserCart.findOne({ user: userId }).populate(
+      "items"
+    );
+
     const newOrder = new Order({
       user: userId,
-      items: cart,
+      items: cartToAdd.toObject(),
       location: details.location,
       customerName: customer.userName,
       email: customer.email,
@@ -136,4 +140,18 @@ export const order = async (req, res) => {
     console.error("Error in order:", err);
     res.status(500).json(err);
   }
+};
+
+export const getAllOrders = async (req, res) => {
+  if (!req.session.userId) {
+    return res.status(400).json({ err: "You are not logged in" });
+  }
+  const customer = await User.findById(req.session.userId);
+
+  if (customer.email !== "yajat.kaul@gmail.com") {
+    return res.status(400).json({ err: "Unauthorized" });
+  }
+  const orders = await Order.find();
+
+  res.status(200).json(orders);
 };

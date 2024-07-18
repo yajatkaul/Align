@@ -26,6 +26,7 @@ const Customise = () => {
     toast.success(
       "Added to cart(I you didnt fill all the item details it wont be added)"
     );
+
     await submit();
 
     setDetails({

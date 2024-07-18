@@ -1,6 +1,7 @@
 import express from "express";
 import {
   deleteCart,
+  getAllOrders,
   getCart,
   order,
   sendCard,
@@ -24,5 +25,6 @@ router.post("/cart/remove", deleteCart);
 router.get("/cart", getCart);
 
 router.post("/", order);
+router.get("/getOrders", getAllOrders);
 
 export default router;
