@@ -3,16 +3,10 @@ import mongoose from "mongoose";
 //Schema
 const userSchema = new mongoose.Schema(
   {
-    displayName: {
-      type: String,
-      required: true,
-      minlength: 5,
-    },
     userName: {
       type: String,
       required: true,
       minlength: 5,
-      unique: true,
     },
     email: {
       type: String,
@@ -24,6 +18,7 @@ const userSchema = new mongoose.Schema(
       required: true,
       minlength: 5,
     },
+    
   },
   { timestamps: true }
 );

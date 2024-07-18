@@ -8,20 +8,23 @@ import { DataContextProvider } from "./context/SendDataContext.tsx";
 import { CustomerContextProvider } from "./context/CustomerContext.tsx";
 import { ProductContextProvider } from "./context/ProductContext.tsx";
 import { Toaster } from "react-hot-toast";
+import { AuthContextProvider } from "./context/AuthContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CustomerContextProvider>
-      <ProductContextProvider>
-        <DataContextProvider>
-          <BrowserRouter>
-            <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
-              <App />
-              <Toaster />
-            </ThemeProvider>
-          </BrowserRouter>
-        </DataContextProvider>
-      </ProductContextProvider>
-    </CustomerContextProvider>
+    <AuthContextProvider>
+      <CustomerContextProvider>
+        <ProductContextProvider>
+          <DataContextProvider>
+            <BrowserRouter>
+              <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+                <App />
+                <Toaster />
+              </ThemeProvider>
+            </BrowserRouter>
+          </DataContextProvider>
+        </ProductContextProvider>
+      </CustomerContextProvider>
+    </AuthContextProvider>
   </React.StrictMode>
 );

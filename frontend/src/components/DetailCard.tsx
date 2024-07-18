@@ -6,9 +6,10 @@ import useOrder from "../hooks/useOrder";
 interface ProductProps {
   name: string;
   type: string;
+  pic: string;
 }
 
-const DetailCard = ({ name, type }: ProductProps) => {
+const DetailCard = ({ name, type, pic }: ProductProps) => {
   const { sendOrder } = useOrder();
   const { data } = useDataContext();
   const { details } = useCustomerContext();
@@ -17,6 +18,7 @@ const DetailCard = ({ name, type }: ProductProps) => {
     color: "",
     glass: "",
     name: name,
+    pic: pic,
     width: "",
     height: "",
   });
@@ -47,6 +49,7 @@ const DetailCard = ({ name, type }: ProductProps) => {
         email: details?.email,
         type: details?.type,
         color: inputs.color,
+        pic: inputs.pic,
         glass: inputs.glass,
         name: inputs.name,
         width: inputs.width,
@@ -65,7 +68,7 @@ const DetailCard = ({ name, type }: ProductProps) => {
 
   return (
     <>
-      <div className="flex md:flex-row flex-col">
+      <div className="flex md:flex-row flex-col w-full">
         <div className="flex md:min-w-[200px]">
           <select
             className="select select-bordered w-full max-w-[200xpx]"
@@ -111,14 +114,13 @@ const DetailCard = ({ name, type }: ProductProps) => {
           </option>
           <option>Clear Glass</option>
           <option>Tinted Glass</option>
-          <option>Nickel Brush</option>
           <option>Figured Glass</option>
           <option>Metallic Mesh</option>
           <option>Fabric</option>
         </select>
         <input
           type="number"
-          placeholder="Width"
+          placeholder="Width(mm)"
           value={inputs.width}
           min="1"
           max="3600"
@@ -127,7 +129,7 @@ const DetailCard = ({ name, type }: ProductProps) => {
         />
         <input
           type="number"
-          placeholder="Height"
+          placeholder="Height(mm)"
           value={inputs.height}
           min="1"
           max="3600"

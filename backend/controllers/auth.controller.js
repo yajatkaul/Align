@@ -4,8 +4,7 @@ import bcrypt from "bcrypt";
 //CREATING AN ACCOUNT FROM HERE
 export const signup = async (req, res) => {
   try {
-    const { displayName, userName, email, password, confirmPassword } =
-      req.body;
+    const { userName, email, password, confirmPassword } = req.body;
 
     //Salting and hashing the password
     const salt = await bcrypt.genSalt(10);
@@ -13,7 +12,6 @@ export const signup = async (req, res) => {
 
     //Function to check if all the details are inputted correctly
     const result = await signupChecks({
-      displayName,
       userName,
       email,
       password,
@@ -27,7 +25,6 @@ export const signup = async (req, res) => {
 
     //If it is able to pass every check create a new user
     const newUser = new User({
-      displayName,
       userName,
       email,
       password: hashedPassword,
@@ -36,8 +33,10 @@ export const signup = async (req, res) => {
     //Saving it to the database
     await newUser.save();
 
+    req.session.userId = newUser._id;
+
     //Account has been created response
-    res.status(200).json({ result: `Success` });
+    res.status(200).json({ email: newUser.email, userName: newUser.userName });
   } catch (err) {
     //Incase there is an error
     console.log(err);
@@ -46,13 +45,7 @@ export const signup = async (req, res) => {
 };
 
 //Function to check the details if they are correct or not
-async function signupChecks({
-  displayName,
-  userName,
-  email,
-  password,
-  confirmPassword,
-}) {
+async function signupChecks({ userName, email, password, confirmPassword }) {
   const userCheck = await User.findOne({ userName });
 
   const emailCheck = await User.findOne({ email });
@@ -65,11 +58,11 @@ async function signupChecks({
     return { message: "Email is already in use" };
   }
 
-  if (!userName || !password || !displayName || !confirmPassword || !email) {
+  if (!userName || !password || !confirmPassword || !email) {
     return { message: "Please fill all fields" };
   }
 
-  if (userName.length < 5 || displayName.length < 5) {
+  if (userName.length < 5) {
     return { message: "Names should be greater than 4 letters" };
   }
 

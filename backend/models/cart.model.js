@@ -2,37 +2,17 @@ import mongoose, { Schema } from "mongoose";
 
 const cartSchema = new Schema(
   {
-    customerName: {
-      type: String,
-      required: true,
-    },
-    companyName: {
-      type: String,
-      required: true,
-    },
-    phoneNumber: {
-      type: Number,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
-    location: {
-      type: String,
-      required: true,
-    },
     color: {
+      type: String,
+      required: true,
+    },
+    pic: {
       type: String,
       required: true,
     },
     glass: {
       type: String,
       required: true,
-    },
-    type: {
-      type: String,
-      required: false,
     },
     name: {
       type: String,

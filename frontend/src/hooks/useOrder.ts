@@ -1,30 +1,13 @@
 const useOrder = () => {
-  const sendOrder = async ({
-    customerName,
-    companyName,
-    phoneNumber,
-    email,
-    location,
-    color,
-    type,
-    glass,
-    name,
-    width,
-    height,
-  }: any) => {
+  const sendOrder = async ({ color, glass, pic, name, width, height }: any) => {
     try {
       const res = await fetch("/api/order/cart", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          customerName: customerName,
-          companyName: companyName,
-          phoneNumber: phoneNumber,
-          email: email,
-          location: location,
           color: color,
-          type: type,
           glass: glass,
+          pic: pic,
           name: name,
           width: width,
           height: height,

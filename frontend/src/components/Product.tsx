@@ -1,7 +1,4 @@
-import { useEffect, useState } from "react";
-import useOrder from "../hooks/useOrder";
-import { useDataContext } from "../context/SendDataContext";
-import { useCustomerContext } from "../context/CustomerContext";
+import { useState } from "react";
 import { CiCirclePlus } from "react-icons/ci";
 import DetailCard from "./DetailCard";
 
@@ -24,7 +21,7 @@ const Product = ({ pic, name, type }: ProductProps) => {
   }
 
   return (
-    <div className="flex md:flex-row flex-col items-center">
+    <div className="flex md:flex-row flex-col items-center w-full">
       <div className="flex items-center mt-[30px]">
         <div className="w-[250px] h-[200px] flex flex-col items-center">
           <img
@@ -39,7 +36,7 @@ const Product = ({ pic, name, type }: ProductProps) => {
             {elements.map(() => {
               return (
                 <>
-                  <DetailCard name={name} type={type} />
+                  <DetailCard name={name} type={type} pic={pic} />
                 </>
               );
             })}
