@@ -11,9 +11,11 @@ const useGetAllOrders = () => {
         const res = await fetch("/api/order/getOrders");
 
         const data = await res.json();
+
         if (data.err) {
           throw new Error(data.err);
         }
+
         setOrders(data);
       } catch (err) {
         toast.error(err.message);

@@ -17,7 +17,7 @@ const Header = () => {
   };
   return (
     <>
-      <div className="fixed top-0 w-screen">
+      <div className="fixed top-0 w-full">
         <div className="flex bg-[#DFD3C3] h-[100px] md:justify-start justify-center items-center md:items-start">
           <Link to="/">
             <img src="/Logo.png" className="md:hidden h-[70px]" />
@@ -40,7 +40,7 @@ const Header = () => {
                   </Link>
                   <CiLogout
                     onClick={handleLogout}
-                    className="w-[40px] h-[40px] mr-[40px] cursor-pointer"
+                    className="w-[40px] h-[40px] mr-[10px] cursor-pointer"
                   />
                 </div>
               </>

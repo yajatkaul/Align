@@ -26,7 +26,7 @@ const Signup = () => {
         />
       </div>
       <form onSubmit={handelSubmit}>
-        <div className="flex w-[400px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[600px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none">
+        <div className="flex max-w-[400px] md:w-[400px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[600px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none">
           <p className="text-[30px]">Sign Up</p>
           <label className="input input-bordered flex items-center gap-2">
             <svg

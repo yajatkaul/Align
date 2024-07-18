@@ -17,7 +17,7 @@ const Card = ({ name, pic }: CardProps) => {
 
   return (
     <div className="flex flex-col items-center mt-[30px] p-4 rounded-xl group hover:bg-[#ffffff23] transition-opacity duration-300 ease-in-out">
-      <div className="w-[400px] h-[200px] overflow-hidden">
+      <div className="max-w-[400px] h-[200px] overflow-hidden">
         <img
           src={pic}
           alt="image"

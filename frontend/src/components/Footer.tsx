@@ -5,7 +5,7 @@ import { TbWorld } from "react-icons/tb";
 
 const Footer = () => {
   return (
-    <div className="w-screen mt-[30px]">
+    <div className="w-full mt-[30px]">
       <div className="flex bg-[#DFD3C3] h-[120px] w-full md:justify-center items-center gap-[10px]">
         <a
           href="https://www.instagram.com/align.mr.glass?igsh=ejlyNXljaml2M2Y0"
