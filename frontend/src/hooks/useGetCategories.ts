@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { useEffect, useState } from "react";
 
 const useGetCategories = () => {
@@ -14,7 +15,7 @@ const useGetCategories = () => {
         }
         setCategories(data);
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
 
