@@ -16,17 +16,20 @@ const useSignup = () => {
   }) => {
     setLoading(true);
     try {
-      const res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          userName,
-          email,
-          phoneNumber,
-          location,
-          type,
-        }),
-      });
+      const res = await fetch(
+        "https://align-backend.onrender.com/api/auth/signup",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userName,
+            email,
+            phoneNumber,
+            location,
+            type,
+          }),
+        }
+      );
 
       const data = await res.json();
       if (data.message) {

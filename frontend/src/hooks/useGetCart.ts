@@ -6,7 +6,7 @@ const useGetCart = () => {
   useEffect(() => {
     const getCart = async () => {
       try {
-        const res = await fetch("/api/order/cart");
+        const res = await fetch("https://align-backend.onrender.com/api/order/cart");
 
         const data = await res.json();
         if (data.err) {
