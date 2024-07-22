@@ -14,7 +14,7 @@ export default defineConfig({
     host: true,
     proxy: {
       "/api": {
-        target: "http://align-backend.onrender.com/",
+        target: "https://align-backend.onrender.com/",
       },
     },
   },
