@@ -11,6 +11,14 @@ const app = express();
 
 configDotenv();
 const PORT = process.env.PORT;
+
+app.use(
+  cors({
+    origin: "*", // Allow all origins, you can restrict to specific origins if needed
+    credentials: true, // Allow credentials such as cookies
+  })
+);
+
 app.use(cookieParser());
 app.use(express.json());
 
