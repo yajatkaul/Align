@@ -8,7 +8,7 @@ const useGetCategories = () => {
     const getCategories = async () => {
       try {
         const res = await fetch(
-          "http://align-backend.onrender.com/api/order/category/get"
+          "https://align-backend.onrender.com/api/order/category/get"
         );
 
         const data = await res.json();
