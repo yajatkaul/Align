@@ -16,7 +16,7 @@ const OrderCard = ({
     <div className="ml-[20px] mb-[20px]">
       <p className="text-[30px]">
         <div className="flex items-center justify-center">
-          <p className="font-bold">Company:</p>
+          <p className="font-bold">Order Details</p>
           <p>{companyName}</p>
         </div>
       </p>

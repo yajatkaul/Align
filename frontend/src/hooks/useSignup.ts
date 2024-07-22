@@ -10,8 +10,9 @@ const useSignup = () => {
   const handelSingup = async ({
     userName,
     email,
-    password,
-    confirmPassword,
+    phoneNumber,
+    location,
+    type,
   }) => {
     setLoading(true);
     try {
@@ -21,8 +22,9 @@ const useSignup = () => {
         body: JSON.stringify({
           userName,
           email,
-          password,
-          confirmPassword,
+          phoneNumber,
+          location,
+          type,
         }),
       });
 

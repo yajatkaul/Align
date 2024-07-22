@@ -122,12 +122,11 @@ export const order = async (req, res) => {
     const newOrder = new Order({
       user: userId,
       items: cartToAdd.toObject(),
-      location: details.location,
+      location: customer.location,
       customerName: customer.userName,
       email: customer.email,
-      type: details.type,
-      companyName: details.companyName,
-      phoneNumber: details.phoneNumber,
+      type: customer.type,
+      phoneNumber: customer.phoneNumber,
     });
     await newOrder.save();
 

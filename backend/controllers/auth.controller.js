@@ -1,21 +1,16 @@
 import User from "../models/user.model.js";
-import bcrypt from "bcrypt";
 
 //CREATING AN ACCOUNT FROM HERE
 export const signup = async (req, res) => {
   try {
-    const { userName, email, password, confirmPassword } = req.body;
-
-    //Salting and hashing the password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password, salt);
+    const { userName, email, phoneNumber, location, type } = req.body;
 
     //Function to check if all the details are inputted correctly
     const result = await signupChecks({
       userName,
       email,
-      password,
-      confirmPassword,
+      location,
+      type,
     });
 
     //If details are not correct then sends a error response
@@ -27,7 +22,9 @@ export const signup = async (req, res) => {
     const newUser = new User({
       userName,
       email,
-      password: hashedPassword,
+      phoneNumber,
+      location,
+      type,
     });
 
     //Saving it to the database
@@ -45,14 +42,14 @@ export const signup = async (req, res) => {
 };
 
 //Function to check the details if they are correct or not
-async function signupChecks({ userName, email, password, confirmPassword }) {
+async function signupChecks({ userName, email, phoneNumber, location, type }) {
   const emailCheck = await User.findOne({ email });
 
   if (emailCheck) {
     return { message: "Email is already in use" };
   }
 
-  if (!userName || !password || !confirmPassword || !email) {
+  if (!userName || !email || !location || !type) {
     return { message: "Please fill all fields" };
   }
 
@@ -60,16 +57,12 @@ async function signupChecks({ userName, email, password, confirmPassword }) {
     return { message: "Names should be greater than 4 letters" };
   }
 
-  if (password.length < 5) {
-    return { message: "Names should be greater than 4 letters" };
-  }
-
   if (!isValidEmail(email)) {
     return { message: "Invalid email format" };
   }
 
-  if (password !== confirmPassword) {
-    return { message: "Passwords do not match" };
+  if (parseInt(phoneNumber) < 1000000000) {
+    return { message: "Enter a valid phone number" };
   }
 
   return true;
@@ -89,9 +82,9 @@ export const login = async (req, res) => {
   }
 
   //Request payload
-  const { email, password } = req.body;
+  const { email } = req.body;
 
-  if (!email || !password) {
+  if (!email) {
     return res.status(400).json({ message: "Please fill all the fields" });
   }
 
@@ -99,18 +92,7 @@ export const login = async (req, res) => {
   const user = await User.findOne({ email });
 
   if (!user) {
-    return res.status(400).json({ err: "Incorrect Credentials" });
-  }
-
-  //Decrypt and compare the password -- returns true or fals
-  const isPasswordCorrect = await bcrypt.compare(
-    password,
-    user?.password || ""
-  );
-
-  //If incorrect return 400 error
-  if (!isPasswordCorrect) {
-    return res.status(400).json({ message: "Incorrect username or password" });
+    return res.status(400).json({ err: "User does not exist" });
   }
 
   //Create a session

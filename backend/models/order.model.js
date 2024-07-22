@@ -12,10 +12,6 @@ const orderSchema = new mongoose.Schema(
       type: JSON,
       required: true,
     },
-    companyName: {
-      type: String,
-      required: true,
-    },
     location: {
       type: String,
       required: true,
