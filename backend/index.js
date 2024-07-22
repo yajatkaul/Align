@@ -12,10 +12,11 @@ const app = express();
 
 configDotenv();
 const PORT = process.env.PORT;
+const CLIENT_URL = "https://align-6p1x.onrender.com";
 
 app.use(
   cors({
-    origin: "https://align-6p1x.onrender.com/",
+    origin: CLIENT_URL,
     credentials: true,
   })
 );
