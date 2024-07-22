@@ -8,7 +8,9 @@ const useGetAllOrders = () => {
   useEffect(() => {
     const getAllOrders = async () => {
       try {
-        const res = await fetch("/api/order/getOrders");
+        const res = await fetch(
+          "https://align-backend.onrender.com/api/order/getOrders"
+        );
 
         const data = await res.json();
 
