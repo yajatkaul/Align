@@ -7,7 +7,9 @@ const useGetCategories = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const res = await fetch("/api/order/category/get");
+        const res = await fetch(
+          "http://align-backend.onrender.com/api/order/category/get"
+        );
 
         const data = await res.json();
         if (data.err) {
