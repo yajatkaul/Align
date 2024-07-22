@@ -6,6 +6,7 @@ import authRoute from "./routes/auth.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
+import cors from "cors";
 
 const app = express();
 
