@@ -6,6 +6,7 @@ const useSendOrder = () => {
     try {
       const response = await fetch("https://align-backend.onrender.com/api/order", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           phoneNumber,

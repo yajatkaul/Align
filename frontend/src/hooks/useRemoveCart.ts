@@ -6,6 +6,7 @@ const useRemoveCart = () => {
     try {
       const res = await fetch(`https://align-backend.onrender.com/api/order/cart/remove`, {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: id }),
       });

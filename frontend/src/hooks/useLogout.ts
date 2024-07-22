@@ -10,6 +10,7 @@ const useLogout = () => {
     try {
       const res = await fetch("https://align-backend.onrender.com/api/auth/logout", {
         method: "POST",
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
       });
 
