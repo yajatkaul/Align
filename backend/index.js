@@ -35,7 +35,6 @@ app.use(
       collectionName: "sessions",
     }),
     cookie: {
-      httpOnly: true,
       sameSite: "None",
       secure: true,
       maxAge: 15 * 24 * 60 * 60 * 1000, // 15 day
