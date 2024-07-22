@@ -15,7 +15,7 @@ const PORT = process.env.PORT;
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://align-6p1x.onrender.com/",
     credentials: true,
   })
 );
@@ -36,7 +36,7 @@ app.use(
     cookie: {
       httpOnly: true,
       sameSite: "None",
-      secure: true,
+      secure: process.env.NODE_ENV === "PRODUCTION" ? true : false, // Set to true if using HTTPS
       maxAge: 15 * 24 * 60 * 60 * 1000, // 15 day
     },
   })
