@@ -7,7 +7,6 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import path from "path";
-import cors from "cors";
 
 const app = express();
 
@@ -31,7 +30,7 @@ app.use(
     }),
     cookie: {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "PRODUCTION" ? true : false, // Set to true if using HTTPS
+      secure: true,
       maxAge: 15 * 24 * 60 * 60 * 1000, // 15 day
     },
   })
