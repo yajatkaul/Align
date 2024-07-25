@@ -9,7 +9,7 @@ const useGetProducts = () => {
   useEffect(() => {
     const getCategories = async (products: any) => {
       try {
-        const res = await fetch(`https://align-backend.onrender.com/api/order/product/${products}`);
+        const res = await fetch(`/api/order/product/${products}`);
         const data = await res.json();
         if (data.err) {
           throw new Error(data.err);

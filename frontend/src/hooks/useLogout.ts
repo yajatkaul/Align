@@ -8,9 +8,8 @@ const useLogout = () => {
 
   const logout = async () => {
     try {
-      const res = await fetch("https://align-backend.onrender.com/api/auth/logout", {
+      const res = await fetch("/api/auth/logout", {
         method: "POST",
-        credentials: "include",
         headers: { "Content-Type": "application/json" },
       });
 

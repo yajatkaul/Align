@@ -6,20 +6,15 @@ import authRoute from "./routes/auth.routes.js";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
+import path from "path";
 import cors from "cors";
 
 const app = express();
 
 configDotenv();
-const PORT = process.env.PORT;
-const CLIENT_URL = "https://align-6p1x.onrender.com";
+const PORT = process.env.PORT || 5000;
 
-app.use(
-  cors({
-    origin: CLIENT_URL,
-    credentials: true,
-  })
-);
+const __dirname = path.resolve();
 
 app.use(cookieParser());
 app.use(express.json());
@@ -36,8 +31,7 @@ app.use(
     }),
     cookie: {
       httpOnly: true,
-      sameSite: "None",
-      secure: true,
+      secure: process.env.NODE_ENV === "PRODUCTION" ? true : false, // Set to true if using HTTPS
       maxAge: 15 * 24 * 60 * 60 * 1000, // 15 day
     },
   })
@@ -45,11 +39,13 @@ app.use(
 
 app.use("/api/auth", authRoute);
 
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
-
 app.use("/api/order", cartRoutes);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(PORT, () => {
   connectToMongoDB();

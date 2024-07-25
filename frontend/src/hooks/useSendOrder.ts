@@ -4,9 +4,8 @@ import { useState, useEffect } from "react";
 const useSendOrder = () => {
   const order = async ({ phoneNumber, type, companyName, location }) => {
     try {
-      const response = await fetch("https://align-backend.onrender.com/api/order", {
+      const response = await fetch("/api/order", {
         method: "POST",
-        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           phoneNumber,

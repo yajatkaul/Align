@@ -64,7 +64,7 @@ const Cart = () => {
                 }
               >
                 Raise Inquiry
-              </button>np
+              </button>
             </>
           )}
 

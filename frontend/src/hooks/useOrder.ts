@@ -1,9 +1,8 @@
 const useOrder = () => {
   const sendOrder = async ({ color, glass, pic, name, width, height }: any) => {
     try {
-      const res = await fetch("https://align-backend.onrender.com/api/order/cart", {
+      const res = await fetch("/api/order/cart", {
         method: "POST",
-        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           color: color,

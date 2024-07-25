@@ -10,11 +10,11 @@ const PORT = process.env.PORT;
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: PORT || 1234,
+    port: PORT || 3000,
     host: true,
     proxy: {
       "/api": {
-        target: "https://align-backend.onrender.com/",
+        target: "http://localhost:5000",
       },
     },
   },
