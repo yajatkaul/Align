@@ -8,7 +8,6 @@ const useSignup = () => {
   const { authUser, setAuthUser } = useAuthContext();
 
   const handelSingup = async ({
-    userName,
     email,
     phoneNumber,
     location,
@@ -20,7 +19,6 @@ const useSignup = () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          userName,
           email,
           phoneNumber,
           location,

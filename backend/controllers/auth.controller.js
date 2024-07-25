@@ -3,11 +3,10 @@ import User from "../models/user.model.js";
 //CREATING AN ACCOUNT FROM HERE
 export const signup = async (req, res) => {
   try {
-    const { userName, email, phoneNumber, location, type } = req.body;
+    const { email, phoneNumber, location, type } = req.body;
 
     //Function to check if all the details are inputted correctly
     const result = await signupChecks({
-      userName,
       email,
       location,
       type,
@@ -20,7 +19,6 @@ export const signup = async (req, res) => {
 
     //If it is able to pass every check create a new user
     const newUser = new User({
-      userName,
       email,
       phoneNumber,
       location,
@@ -33,7 +31,7 @@ export const signup = async (req, res) => {
     req.session.userId = newUser._id;
 
     //Account has been created response
-    res.status(200).json({ email: newUser.email, userName: newUser.userName });
+    res.status(200).json({ email: newUser.email });
   } catch (err) {
     //Incase there is an error
     console.log(err);
@@ -42,19 +40,15 @@ export const signup = async (req, res) => {
 };
 
 //Function to check the details if they are correct or not
-async function signupChecks({ userName, email, phoneNumber, location, type }) {
+async function signupChecks({ email, phoneNumber, location, type }) {
   const emailCheck = await User.findOne({ email });
 
   if (emailCheck) {
     return { message: "Email is already in use" };
   }
 
-  if (!userName || !email || !location || !type) {
+  if (!email || !location || !type) {
     return { message: "Please fill all fields" };
-  }
-
-  if (userName.length < 5) {
-    return { message: "Names should be greater than 4 letters" };
   }
 
   if (!isValidEmail(email)) {

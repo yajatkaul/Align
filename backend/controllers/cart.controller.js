@@ -123,7 +123,6 @@ export const order = async (req, res) => {
       user: userId,
       items: cartToAdd.toObject(),
       location: customer.location,
-      customerName: customer.userName,
       email: customer.email,
       type: customer.type,
       phoneNumber: customer.phoneNumber,

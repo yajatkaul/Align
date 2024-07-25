@@ -30,7 +30,7 @@ const Login = () => {
       <form onSubmit={handelSubmit}>
         <div className="flex max-w-[400px] md:w-[400px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[600px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none">
           <div className="flex justify-start items-start">
-            <p className="text-[30px]">Log In</p>
+            <p className="text-[30px]">Welcome Back!</p>
           </div>
           <div className="flex flex-col h-full gap-[30px]">
             <label className="input input-bordered flex items-center gap-2">
@@ -56,7 +56,7 @@ const Login = () => {
 
             <a href="/signup" className="mt-[100px]">
               <div className="divider"></div>
-              <p>Don't have an account?</p>
+              <p className="underline">Don't have an account?</p>
             </a>
             <div className="flex justify-center items-center ">
               <button className="btn btn-wide outline outline-1 text-[20px]">

@@ -4,7 +4,6 @@ import useSignup from "../hooks/useSignup";
 
 const Signup = () => {
   const [inputs, setInputs] = useState({
-    userName: "",
     email: "",
     phoneNumber: "",
     location: "",
@@ -28,27 +27,8 @@ const Signup = () => {
       </div>
       <form onSubmit={handelSubmit}>
         <div className="flex max-w-[400px] md:w-[400px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[800px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none">
-          <p className="text-[30px]">Sign Up</p>
+          <p className="text-[30px]">Enter your details!</p>
           <div className="flex flex-col gap-4">
-            <label className="input input-bordered flex items-center gap-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 16 16"
-                fill="currentColor"
-                className="w-4 h-4 opacity-70"
-              >
-                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
-              </svg>
-              <input
-                type="text"
-                className="grow"
-                placeholder="Username"
-                value={inputs.userName}
-                onChange={(e) =>
-                  setInputs({ ...inputs, userName: e.target.value })
-                }
-              />
-            </label>
             <label className="input input-bordered flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -150,7 +130,8 @@ const Signup = () => {
             </select>
           </div>
           <a href="/login">
-            <p>Already have an account?</p>
+            <div className="divider"></div>
+            <p className="underline">Already have an account?</p>
           </a>
           <div className="flex justify-center items-center ">
             <button className="btn btn-wide outline outline-1 text-[20px]">
