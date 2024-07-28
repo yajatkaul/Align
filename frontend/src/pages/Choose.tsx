@@ -1,9 +1,25 @@
 // @ts-nocheck
 import { useState } from "react";
+import useLogin from "../hooks/useLogin";
+import toast from "react-hot-toast";
 import useSignup from "../hooks/useSignup";
 
-const Signup = () => {
+const Choose = () => {
   const [inputs, setInputs] = useState({
+    email: "",
+  });
+  const { handelLogin } = useLogin();
+
+  const handelSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!inputs.email) {
+      return toast.error("Fill all the fields!");
+    }
+    await handelLogin(inputs);
+  };
+
+  const [inputs2, setInputs2] = useState({
     email: "",
     phoneNumber: "",
     location: "",
@@ -11,23 +27,62 @@ const Signup = () => {
   });
   const { loading, handelSingup } = useSignup();
 
-  const handelSubmit = async (e) => {
+  const handelSubmit2 = async (e) => {
     e.preventDefault();
-    await handelSingup(inputs);
+    await handelSingup(inputs2);
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-[url('/bg.jpg')]">
-      <div className="hidden md:flex h-[800px] max-w-[700px]">
+    <div className="w-screen h-screen flex justify-center items-center bg-[url('/bg.jpg')] bg-cover">
+      <div className="hidden md:flex h-[700px] max-w-[700px]">
         <img
           src="/authpic.png"
           alt="Image"
           className="object-cover rounded-l-[30px]"
         />
       </div>
-      <form onSubmit={handelSubmit}>
-        <div className="flex max-w-[400px] md:w-[400px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[800px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none">
-          <p className="text-[30px]">Enter your details!</p>
+
+      <div className="flex max-w-[400px] md:w-[400px] h-[700px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[600px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none bg-[#e0dad3]">
+        <form onSubmit={handelSubmit}>
+          <div className="">
+            <div className="flex flex-col justify-center items-center"></div>
+            <div className="flex justify-start items-start">
+              <p className="text-[30px] font-bold">Welcome Back!</p>
+            </div>
+            <div className="flex flex-col h-full">
+              <label className="input input-bordered flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  className="h-4 w-4 opacity-70"
+                >
+                  <path d="M2.5 3A1.5 1.5 0 0 0 1 4.5v.793c.026.009.051.02.076.032L7.674 8.51c.206.1.446.1.652 0l6.598-3.185A.755.755 0 0 1 15 5.293V4.5A1.5 1.5 0 0 0 13.5 3h-11Z" />
+                  <path d="M15 6.954 8.978 9.86a2.25 2.25 0 0 1-1.956 0L1 6.954V11.5A1.5 1.5 0 0 0 2.5 13h11a1.5 1.5 0 0 0 1.5-1.5V6.954Z" />
+                </svg>
+                <input
+                  type="email"
+                  className="grow"
+                  placeholder="Email"
+                  value={inputs.email}
+                  onChange={(e) =>
+                    setInputs({ ...inputs, email: e.target.value })
+                  }
+                />
+              </label>
+
+              <div>
+                <div className="divider"></div>
+              </div>
+              <div className="flex justify-center items-center ">
+                <button className="btn w-full text-[20px]">Login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <form onSubmit={handelSubmit2}>
+          <div className="divider m-0"></div>
+          <p className="text-[30px] font-bold">Enter your details!</p>
           <div className="flex flex-col gap-4">
             <label className="input input-bordered flex items-center gap-2">
               <svg
@@ -43,9 +98,9 @@ const Signup = () => {
                 type="email"
                 className="grow"
                 placeholder="Email"
-                value={inputs.email}
+                value={inputs2.email}
                 onChange={(e) =>
-                  setInputs({ ...inputs, email: e.target.value })
+                  setInputs2({ ...inputs2, email: e.target.value })
                 }
               />
             </label>
@@ -76,9 +131,9 @@ const Signup = () => {
                 type="number"
                 className="grow"
                 placeholder="Phone Number"
-                value={inputs.phoneNumber}
+                value={inputs2.phoneNumber}
                 onChange={(e) =>
-                  setInputs({ ...inputs, phoneNumber: e.target.value })
+                  setInputs2({ ...inputs2, phoneNumber: e.target.value })
                 }
               />
             </label>
@@ -108,15 +163,15 @@ const Signup = () => {
                 type="text"
                 className="grow"
                 placeholder="Location"
-                value={inputs.location}
+                value={inputs2.location}
                 onChange={(e) =>
-                  setInputs({ ...inputs, location: e.target.value })
+                  setInputs2({ ...inputs2, location: e.target.value })
                 }
               />
             </label>
             <select
               className="select select-bordered w-full"
-              onChange={(e) => setInputs({ ...inputs, type: e.target.value })}
+              onChange={(e) => setInputs2({ ...inputs2, type: e.target.value })}
             >
               <option disabled selected>
                 Type
@@ -131,14 +186,14 @@ const Signup = () => {
           </div>
           <div>
             <div className="divider"></div>
-            <button className="btn outline outline-1 text-[20px] flex justify-center items-center w-full">
+            <button className="btn text-[20px] flex justify-center items-center w-full">
               SignUp
             </button>
           </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 };
 
-export default Signup;
+export default Choose;

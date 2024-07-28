@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import { useAuthContext } from "./context/AuthContext";
 import Cart from "./pages/Cart";
 import Dashboard from "./pages/Dashboard";
+import Choose from "./pages/Choose";
 
 function App() {
   const { authUser } = useAuthContext();
@@ -15,25 +16,24 @@ function App() {
     <>
       <Routes>
         <Route
-          path="/login"
-          element={authUser ? <Navigate to="/" /> : <Login />}
+          path="/"
+          element={authUser ? <Navigate to="/home" /> : <Choose />}
         />
         <Route
-          path="/signup"
-          element={authUser ? <Navigate to="/" /> : <Signup />}
+          path="/home"
+          element={authUser ? <Requirement /> : <Navigate to="/" />}
         />
-        <Route path="/" element={<Requirement />} />
         <Route
           path="/select"
-          element={authUser ? <Customise /> : <Navigate to="/login" />}
+          element={authUser ? <Customise /> : <Navigate to="/" />}
         />
         <Route
           path="/cart"
-          element={authUser ? <Cart /> : <Navigate to="/login" />}
+          element={authUser ? <Cart /> : <Navigate to="/" />}
         />
         <Route
           path="/dashboard"
-          element={authUser ? <Dashboard /> : <Navigate to="/login" />}
+          element={authUser ? <Dashboard /> : <Navigate to="/" />}
         />
       </Routes>
     </>

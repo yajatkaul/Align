@@ -51,7 +51,7 @@ const Requirement = () => {
             </>
           ) : (
             <>
-              <Link to="/login">
+              <Link to="/">
                 <button className="btn fixed right-[20px] bottom-[30px] w-[50px] h-[50px] md:hidden">
                   <div>
                     <CiLogin className="w-[50px] h-[50px]" />
