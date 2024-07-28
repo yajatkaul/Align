@@ -31,9 +31,9 @@ const Cart = () => {
 
   return (
     <>
-      <div className="flex flex-col h-screen bg-cover bg-center bg-no-repeat bg-[url('/bg.jpg')]">
+      <div className="flex flex-col h-screen">
         <Header />
-        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center">
+        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center bg-cover bg-center bg-[url('/bg.jpg')]">
           {cart?.items?.map((item) => {
             return (
               <Item
