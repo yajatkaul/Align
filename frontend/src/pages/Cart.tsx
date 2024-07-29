@@ -33,7 +33,7 @@ const Cart = () => {
     <>
       <div className="flex flex-col h-screen">
         <Header />
-        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center bg-cover bg-center bg-[url('/bg.jpg')]">
+        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
           {cart?.items?.map((item) => {
             return (
               <Item

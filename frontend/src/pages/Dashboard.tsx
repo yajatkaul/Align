@@ -14,7 +14,7 @@ const Dashboard = () => {
     <>
       <div className="flex flex-col h-screen">
         <Header />
-        <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')]">
+        <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
           {orders?.map((item) => {
             return (
               <OrderCard
