@@ -26,6 +26,10 @@ const cartSchema = new Schema(
       type: String,
       required: true,
     },
+    remarks: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

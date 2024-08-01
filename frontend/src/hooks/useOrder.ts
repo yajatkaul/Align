@@ -1,5 +1,13 @@
 const useOrder = () => {
-  const sendOrder = async ({ color, glass, pic, name, width, height }: any) => {
+  const sendOrder = async ({
+    color,
+    glass,
+    pic,
+    name,
+    width,
+    height,
+    remarks,
+  }: any) => {
     try {
       const res = await fetch("/api/order/cart", {
         method: "POST",
@@ -11,6 +19,7 @@ const useOrder = () => {
           name: name,
           width: width,
           height: height,
+          remarks: remarks,
         }),
       });
 

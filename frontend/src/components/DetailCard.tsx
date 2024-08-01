@@ -21,6 +21,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
     pic: pic,
     width: "",
     height: "",
+    remarks: "",
   });
 
   const limiter = () => {
@@ -54,6 +55,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
         name: inputs.name,
         width: inputs.width,
         height: inputs.height,
+        remarks: inputs.remarks,
       });
     }
   };
@@ -69,9 +71,9 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
   return (
     <>
       <div className="flex md:flex-row flex-col">
-        <div className="flex md:min-w-[200px]">
+        <div className="flex md:min-w-[120px]">
           <select
-            className="select select-bordered w-full max-w-[200xpx]"
+            className="select select-bordered w-full max-w-[120px]"
             onChange={handleColorChange}
           >
             <option disabled selected>
@@ -106,7 +108,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
           )}
         </div>
         <select
-          className="select select-bordered w-full max-w-[200xpx]"
+          className="select select-bordered w-full max-w-[120px]"
           onChange={handleGlassChange}
         >
           <option disabled selected>
@@ -135,6 +137,12 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
           max="3600"
           onChange={(e) => setInputs({ ...inputs, height: e.target.value })}
           className="input input-bordered w-full max-w-[150px] text-[14px]"
+        />
+        <textarea
+          placeholder="Remarks"
+          value={inputs.remarks}
+          onChange={(e) => setInputs({ ...inputs, remarks: e.target.value })}
+          className="textarea textarea-bordered h-[47px] w-full max-w-[200px]"
         />
       </div>
     </>

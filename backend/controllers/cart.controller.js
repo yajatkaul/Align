@@ -7,6 +7,7 @@ import Order from "../models/order.model.js";
 export const sendCard = async (req, res) => {
   try {
     const details = req.body;
+    console.log(req.body);
     const userId = req.session.userId;
 
     // Validate required fields
@@ -30,6 +31,7 @@ export const sendCard = async (req, res) => {
       name: details.name,
       width: details.width,
       height: details.height,
+      remarks: details.remarks,
     });
 
     // Find UserCart by user ID

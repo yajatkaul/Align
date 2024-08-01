@@ -11,6 +11,7 @@ interface ItemProps {
   height: string;
   width: string;
   color: string;
+  remarks: string;
 }
 
 const Item = ({
@@ -22,6 +23,7 @@ const Item = ({
   height,
   width,
   color,
+  remarks,
 }: ItemProps) => {
   const removeCartItem = useRemoveCart();
 
@@ -83,6 +85,15 @@ const Item = ({
               disabled
             />
           </div>
+          <div className="flex flex-col">
+            <label>Remarks</label>
+            <textarea
+              className="textarea textarea-bordered"
+              value={remarks}
+              disabled
+            />
+          </div>
+
           <CiTrash
             onClick={() => {
               deleteItem({ id });

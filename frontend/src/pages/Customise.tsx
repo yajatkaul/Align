@@ -47,7 +47,7 @@ const Customise = () => {
       <div className="flex flex-col h-screen">
         <Header />
 
-        <div className="flex flex-1 mt-[100px] flex-wrap gap-8 justify-center pl-[10px] pr-[10px] pb-[60px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
+        <div className="flex flex-1 mt-[100px] flex-wrap gap-8 justify-center pb-[60px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
           {product?.map((item) => {
             return (
               <Product

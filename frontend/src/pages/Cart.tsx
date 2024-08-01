@@ -45,6 +45,7 @@ const Cart = () => {
                 height={item.height}
                 color={item.color}
                 glass={item.glass}
+                remarks={item.remarks}
               />
             );
           })}

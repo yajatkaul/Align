@@ -224,7 +224,7 @@ const OrderCard = ({
                       <div className="flex">
                         <input
                           type="text"
-                          value={`${item.color}mm`}
+                          value={`${item.color}`}
                           className="input input-bordered w-full max-w-xs"
                           disabled
                         />
@@ -238,8 +238,16 @@ const OrderCard = ({
                       <label>Glass</label>
                       <input
                         type="text"
-                        value={`${item.glass}mm`}
+                        value={`${item.glass}`}
                         className="input input-bordered w-full max-w-xs"
+                        disabled
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <label>Remarks</label>
+                      <textarea
+                        className="textarea textarea-bordered"
+                        value={item.remarks}
                         disabled
                       />
                     </div>
