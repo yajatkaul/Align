@@ -12,9 +12,9 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div className="flex flex-col h-screen">
+      <div className="flex flex-col h-screen w-screen">
         <Header />
-        <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
+        <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed w-full overflow-x-hidden pr-[30px]">
           {orders?.map((item) => {
             return (
               <OrderCard

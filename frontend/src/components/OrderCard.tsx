@@ -11,9 +11,9 @@ const OrderCard = ({
   type,
 }) => {
   const formattedTime = convertToIST(time);
-  console.log(data);
+
   return (
-    <div className="ml-[20px] mb-[20px]">
+    <div className="ml-[20px] mb-[20px] w-full">
       <p className="text-[30px]">
         <div className="flex items-center justify-center">
           <p className="font-bold">Order Details</p>
@@ -225,7 +225,7 @@ const OrderCard = ({
                         <input
                           type="text"
                           value={`${item.color}`}
-                          className="input input-bordered w-full max-w-xs"
+                          className="input input-bordered w-full max-w-[130px]"
                           disabled
                         />
                         <img
@@ -246,7 +246,7 @@ const OrderCard = ({
                     <div className="flex flex-col">
                       <label>Remarks</label>
                       <textarea
-                        className="textarea textarea-bordered"
+                        className="textarea textarea-bordered w-full overflow-auto"
                         value={item.remarks}
                         disabled
                       />
