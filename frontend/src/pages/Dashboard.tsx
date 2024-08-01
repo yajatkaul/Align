@@ -7,6 +7,7 @@ import { FaPrint } from "react-icons/fa";
 
 const Dashboard = () => {
   const { orders } = useGetAllOrders();
+  const reversedArray = orders?.slice().reverse();
   const print = () => {
     window.print();
   };
@@ -15,7 +16,7 @@ const Dashboard = () => {
       <div className="flex flex-col h-screen w-screen">
         <Header />
         <div className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed w-full overflow-x-hidden pr-[30px]">
-          {orders?.map((item) => {
+          {reversedArray?.map((item) => {
             return (
               <OrderCard
                 companyName={item.companyName}
