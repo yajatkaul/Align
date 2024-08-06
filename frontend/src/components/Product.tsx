@@ -22,7 +22,7 @@ const Product = ({ pic, name, type }: ProductProps) => {
 
   return (
     <div className="flex md:flex-row flex-col items-center w-full max-w-[800px]">
-      <div className="flex items-center mt-[30px]">
+      <div className="flex items-center mt-[30px] gap-4">
         <div className="w-[250px] h-[200px] flex flex-col items-center">
           <img
             src={pic}

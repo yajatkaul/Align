@@ -108,17 +108,33 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
           )}
         </div>
         <select
-          className="select select-bordered w-full max-w-[120px]"
+          className="select select-bordered w-full max-w-[160px]"
           onChange={handleGlassChange}
         >
-          <option disabled selected>
-            Glass
-          </option>
-          <option>Clear Glass</option>
-          <option>Tinted Glass</option>
-          <option>Figured Glass</option>
-          <option>Metallic Mesh</option>
-          <option>Fabric</option>
+          {type == "Mirror" && (
+            <>
+              <option disabled selected>
+                Glass Shape
+              </option>
+              <option>Round</option>
+              <option>Oval</option>
+              <option>Square</option>
+              <option>Rectangle</option>
+              <option>Custom</option>
+            </>
+          )}
+          {type != "Mirror" && (
+            <>
+              <option disabled selected>
+                Glass
+              </option>
+              <option>Clear Glass</option>
+              <option>Tinted Glass</option>
+              <option>Figured Glass</option>
+              <option>Metallic Mesh</option>
+              <option>Fabric</option>
+            </>
+          )}
         </select>
         <input
           type="number"
