@@ -26,7 +26,7 @@ const Requirement = () => {
       <div className="flex flex-col h-screen">
         <Header />
 
-        <div className="flex flex-1 mt-[100px] flex-wrap gap-8 justify-center w-full bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed pl-[30px] pr-[30px] pb-[20px]">
+        <div className="flex flex-1 mt-[100px] flex-wrap gap-8 justify-center w-full bg-cover bg-center bg-[url('/api/uploads/bg.jpg')] bg-fixed pl-[30px] pr-[30px] pb-[20px]">
           {categories?.map((category) => {
             return <Card name={category.name} pic={category.image} />;
           })}

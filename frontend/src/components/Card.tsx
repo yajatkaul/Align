@@ -19,7 +19,7 @@ const Card = ({ name, pic }: CardProps) => {
     <div className="flex flex-col items-center p-4 rounded-xl group hover:bg-[#ffffff23] hover:z-0 transition-opacity duration-300 ease-in-out w-full md:w-[300px]">
       <div className="max-w-[400px] h-[200px] overflow-hidden">
         <img
-          src={pic}
+          src={`/api/uploads${pic}`}
           alt="image"
           className="w-full h-full object-scale-down transition-opacity duration-300 ease-in-out group-hover:opacity-80"
         />

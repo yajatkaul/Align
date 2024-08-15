@@ -39,7 +39,7 @@ const Dashboard = () => {
       <div className="flex flex-col h-screen w-screen">
         <Header />
         <div
-          className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed w-full overflow-x-hidden pr-[30px]"
+          className="flex-1 mt-[100px] bg-cover bg-center bg-[url('/api/uploads/bg.jpg')] bg-fixed w-full overflow-x-hidden pr-[30px]"
           ref={containerRef}
         >
           {orders?.map((item) => (

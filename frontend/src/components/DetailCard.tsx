@@ -200,7 +200,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
             </select>
             {inputs.color && (
               <img
-                src={`${inputs.color}.png`}
+                src={`/api/uploads/${inputs.color}.png`}
                 alt={inputs.color}
                 className="rounded-[50%] w-[40px] h-[40px] mt-[4px]"
               />
@@ -244,7 +244,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
         </>
       )}
       <textarea
-        placeholder="Remarks"
+        placeholder={type === "Wall Cladding" ? "Remarks*" : "Remarks"}
         value={inputs.remarks}
         onChange={(e) =>
           setInputs((prev) => ({ ...prev, remarks: e.target.value }))

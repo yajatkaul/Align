@@ -20,11 +20,14 @@ const Header = () => {
       <div className="fixed top-0 w-full z-20">
         <div className="flex bg-[#DFD3C3] h-[100px] md:justify-start justify-center items-center md:items-start">
           <Link to="/">
-            <img src="/Logo.png" className="md:hidden h-[70px]" />
+            <img src="/api/uploads/Logo.png" className="md:hidden h-[70px]" />
           </Link>
           <div className="hidden md:flex mt-[5px] w-full justify-between items-center">
             <Link to="/">
-              <img src="/Logo.png" className="h-[80px] mt-[5px] ml-[10px]" />
+              <img
+                src="/api/uploads/Logo.png"
+                className="h-[80px] mt-[5px] ml-[10px]"
+              />
             </Link>
             {!authUser ? (
               <>

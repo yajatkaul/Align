@@ -43,6 +43,8 @@ app.use("/api/order", cartRoutes);
 
 app.use("/api/utils", utilsRoutes);
 
+app.use("/api/uploads", express.static(path.join(__dirname, "/uploads")));
+
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
 app.get("*", (req, res) => {

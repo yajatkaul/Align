@@ -25,7 +25,7 @@ const Product = ({ pic, name, type }: ProductProps) => {
       <div className="flex items-center mt-[30px] gap-4">
         <div className="w-[250px] h-[200px] flex flex-col items-center">
           <img
-            src={pic}
+            src={`/api/uploads${pic}`}
             alt="image"
             className="w-full h-full object-scale-down"
           />

@@ -34,7 +34,10 @@ const Item = ({
     <>
       <div className="flex items-center gap-2 m-[10px] md:flex-row">
         <div className="flex flex-col items-center">
-          <img src={pic} className="w-[250px] h-full object-scale-down" />
+          <img
+            src={`/api/uploads/${pic}`}
+            className="w-[250px] h-full object-scale-down"
+          />
           <p>{name}</p>
         </div>
         <div className="flex gap-4 flex-col md:flex-row">
@@ -73,7 +76,7 @@ const Item = ({
                 />
               </div>
               <img
-                src={`${color}.png`}
+                src={`/api/uploads/${color}.png`}
                 className="rounded-[50%] w-[40px] h-[40px] mt-[29px]"
               />
             </div>

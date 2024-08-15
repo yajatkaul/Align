@@ -197,7 +197,10 @@ const OrderCard = ({
               <>
                 <div className="flex gap-4">
                   <div className="flex flex-col justify-center items-center">
-                    <img src={item.pic} className="max-w-[200px]" />
+                    <img
+                      src={`/api/uploads${item.pic}`}
+                      className="max-w-[200px]"
+                    />
                     <div>{item.name}</div>
                   </div>
                   <div className="flex md:flex-row flex-col gap-4">
@@ -229,7 +232,7 @@ const OrderCard = ({
                           disabled
                         />
                         <img
-                          src={`${item.color}.png`}
+                          src={`/api/uploads/${item.color}.png`}
                           className="w-[40px] h-[40px] rounded-[100%]"
                         />
                       </div>

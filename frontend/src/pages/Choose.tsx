@@ -33,16 +33,16 @@ const Choose = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-[url('/bg.jpg')] bg-cover">
+    <div className="w-screen h-screen flex justify-center items-center bg-[url('/api/uploads/bg.jpg')] bg-cover">
       <div className="hidden md:flex h-[700px] max-w-[700px]">
         <img
-          src="/authpic.png"
+          src="/api/uploads/authpic.png"
           alt="Image"
           className="object-cover rounded-l-[30px]"
         />
       </div>
 
-      <div className="flex max-w-[400px] md:w-[400px] h-[700px] justify-center px-4 py-16 bg-base-200 flex-col gap-[30px] h-[600px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none bg-[#e0dad3]">
+      <div className="flex max-w-[400px] md:w-[400px] h-[700px] justify-center px-4 py-16 flex-col gap-[30px] md:rounded-r-[30px] rounded-[30px] md:rounded-l-none bg-[#e0dad3]">
         <form onSubmit={handelSubmit}>
           <div className="">
             <div className="flex flex-col justify-center items-center"></div>
