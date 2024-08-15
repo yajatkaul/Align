@@ -7,7 +7,6 @@ import Order from "../models/order.model.js";
 export const sendCard = async (req, res) => {
   try {
     const details = req.body;
-    console.log(req.body);
     const userId = req.session.userId;
 
     // Validate required fields
@@ -17,7 +16,6 @@ export const sendCard = async (req, res) => {
 
     // Fetch user details
     const temp = await User.findById(userId);
-    console.log(temp);
 
     if (!temp) {
       return res.status(404).json({ error: "User not found" });
@@ -110,17 +108,15 @@ export const deleteCart = async (req, res) => {
 
 export const order = async (req, res) => {
   try {
-    const details = req.body;
     const userId = req.session.userId;
 
-    const customer = await User.findById(req.session.userId);
-
-    const cart = await UserCart.findOne({ user: userId });
-
+    // Retrieve customer and cart details
+    const customer = await User.findById(userId);
     const cartToAdd = await UserCart.findOne({ user: userId }).populate(
       "items"
     );
-
+    console.log(cartToAdd);
+    // Create and save the new order
     const newOrder = new Order({
       user: userId,
       items: cartToAdd.toObject(),
@@ -131,14 +127,51 @@ export const order = async (req, res) => {
     });
     await newOrder.save();
 
-    cart.items = [];
+    // Clear the cart
+    await UserCart.updateOne({ user: userId }, { $set: { items: [] } });
 
-    await cart.save();
+    // Iterate over each item in the order
+    for (const item of cartToAdd.items) {
+      // Prepare the JSON payload for each item
+      const jsonPayload = {
+        fields: {
+          Title: newOrder._id,
+          field_1: customer.location,
+          field_2: customer.phoneNumber,
+          field_3: customer.email,
+          field_4: customer.type,
+          field_5: newOrder.createdAt,
+          field_6: item._id || "NA",
+          field_7: item.color || "NA",
+          field_8: item.pic || "NA",
+          field_9: item.glass || "NA",
+          field_10: item.name || "NA",
+          field_11: item.width || 0,
+          field_12: item.height || 0,
+          field_13: item.remarks || "NA",
+          field_14: item.createdAt || "NA",
+          field_15: item.updatedAt || "NA",
+        },
+      };
 
-    res.status(200).json({ err: "Order Successful" });
-  } catch (err) {
-    console.error("Error in order:", err);
-    res.status(500).json(err);
+      // Send JSON payload to the endpoint
+      await fetch(
+        "https://graph.microsoft.com/v1.0/sites/2f1cd2ad-69b8-4ede-b326-cdd9838b04eb,dac56c1a-fd7b-4d8e-a943-9d22add20e39/lists/984554f0-f782-4bf8-9b89-8fbc5b25c917/items/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.AUTHTOKEN}`,
+          },
+          body: JSON.stringify(jsonPayload),
+        }
+      );
+    }
+
+    res.status(200).json({ message: "Order processed and JSON data sent." });
+  } catch (error) {
+    console.error("Error processing order:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 
