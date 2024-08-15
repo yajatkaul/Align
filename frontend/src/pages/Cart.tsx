@@ -33,7 +33,7 @@ const Cart = () => {
     <>
       <div className="flex flex-col h-screen">
         <Header />
-        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-center bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed">
+        <div className="flex flex-1 mt-[100px] flex-wrap flex-col justify-center items-start bg-cover bg-center bg-[url('/bg.jpg')] bg-fixed pl-[0px] xl:pl-[17%]">
           {cart?.items?.map((item) => {
             return (
               <Item
@@ -58,14 +58,16 @@ const Cart = () => {
             </p>
           ) : (
             <>
-              <button
-                className="btn btn-wide max-w-[800px]"
-                onClick={() =>
-                  document.getElementById("my_modal_2").showModal()
-                }
-              >
-                Raise Inquiry
-              </button>
+              <div className="flex w-full justify-center items-center">
+                <button
+                  className="btn btn-wide max-w-[800px] mb-[50px]"
+                  onClick={() =>
+                    document.getElementById("my_modal_2").showModal()
+                  }
+                >
+                  Raise Inquiry
+                </button>
+              </div>
             </>
           )}
 
@@ -75,7 +77,7 @@ const Cart = () => {
                 Confirm Order
               </h3>
               <form onSubmit={submit} className="flex flex-col gap-8">
-                <button className="btn btn-wide w-full">Raise Inquiry</button>
+                <button className="btn w-full">Raise Inquiry</button>
               </form>
             </div>
             <form method="dialog" className="modal-backdrop">

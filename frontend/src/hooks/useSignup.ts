@@ -7,12 +7,7 @@ const useSignup = () => {
   const [loading, setLoading] = useState(false);
   const { authUser, setAuthUser } = useAuthContext();
 
-  const handelSingup = async ({
-    email,
-    phoneNumber,
-    location,
-    type,
-  }) => {
+  const handelSingup = async ({ email, phoneNumber, location, type }) => {
     setLoading(true);
     try {
       const res = await fetch("/api/auth/signup", {
@@ -31,7 +26,7 @@ const useSignup = () => {
         throw new Error(data.message);
       }
 
-      localStorage.setItem("social-hub", JSON.stringify(data));
+      localStorage.setItem("Align", JSON.stringify(data));
 
       setAuthUser(data);
 

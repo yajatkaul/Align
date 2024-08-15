@@ -27,7 +27,7 @@ const useOrder = () => {
       if (data.err) {
         throw new Error(data.err);
       }
-      console.log(data);
+
     } catch (err) {
       console.log(err);
     }

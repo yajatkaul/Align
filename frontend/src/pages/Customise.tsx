@@ -23,9 +23,7 @@ const Customise = () => {
   const handleSumbit = async (e) => {
     event.preventDefault();
 
-    toast.success(
-      "Added to cart(If you didnt fill all the item details it wont be added)"
-    );
+    toast.success("Added to cart");
 
     await submit();
 
@@ -42,6 +40,7 @@ const Customise = () => {
   const submit = () => {
     setData(data + 1);
   };
+
   return (
     <>
       <div className="flex flex-col h-screen">

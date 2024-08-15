@@ -26,7 +26,6 @@ const Item = ({
   remarks,
 }: ItemProps) => {
   const removeCartItem = useRemoveCart();
-
   const deleteItem = async (id) => {
     await removeCartItem(id);
     window.location.reload();
@@ -45,7 +44,7 @@ const Item = ({
               type="text"
               placeholder="You can't touch this"
               className="input input-bordered w-full max-w-xs"
-              value={`${width}mm`}
+              value={`${width || 0}mm`}
               disabled
             />
           </div>
@@ -55,36 +54,45 @@ const Item = ({
               type="text"
               placeholder="You can't touch this"
               className="input input-bordered w-full max-w-xs"
-              value={`${height}mm`}
+              value={`${height || 0}mm`}
               disabled
             />
           </div>
-          <div className="flex">
+          {color === "" || color === "Disabled" ? (
+            ""
+          ) : (
+            <div className="flex">
+              <div className="flex flex-col">
+                <label>Color</label>
+                <input
+                  type="text"
+                  placeholder="Disabled"
+                  className="input input-bordered w-full max-w-xs"
+                  value={color}
+                  disabled
+                />
+              </div>
+              <img
+                src={`${color}.png`}
+                className="rounded-[50%] w-[40px] h-[40px] mt-[29px]"
+              />
+            </div>
+          )}
+          {glass === "" || glass === "Disabled" ? (
+            ""
+          ) : (
             <div className="flex flex-col">
-              <label>Color</label>
+              <label>Glass</label>
               <input
                 type="text"
-                placeholder="You can't touch this"
+                placeholder="Disabled"
                 className="input input-bordered w-full max-w-xs"
-                value={color}
+                value={glass}
                 disabled
               />
             </div>
-            <img
-              src={`${color}.png`}
-              className="rounded-[50%] w-[40px] h-[40px] mt-[29px]"
-            />
-          </div>
-          <div className="flex flex-col">
-            <label>Glass</label>
-            <input
-              type="text"
-              placeholder="You can't touch this"
-              className="input input-bordered w-full max-w-xs"
-              value={glass}
-              disabled
-            />
-          </div>
+          )}
+
           <div className="flex flex-col">
             <label>Remarks</label>
             <textarea

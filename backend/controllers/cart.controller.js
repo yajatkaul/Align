@@ -11,12 +11,12 @@ export const sendCard = async (req, res) => {
     const userId = req.session.userId;
 
     // Validate required fields
-    if (!details.name || !details.width || !details.height || !details.glass) {
+    if (!details.name) {
       return res.status(400).json({ error: "Fill all the details" });
     }
 
     // Fetch user details
-    const temp = await User.findOne({ _id: userId });
+    const temp = await User.findById(userId);
     console.log(temp);
 
     if (!temp) {

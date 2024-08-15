@@ -4,7 +4,6 @@ const cartSchema = new Schema(
   {
     color: {
       type: String,
-      required: true,
     },
     pic: {
       type: String,
@@ -12,7 +11,6 @@ const cartSchema = new Schema(
     },
     glass: {
       type: String,
-      required: true,
     },
     name: {
       type: String,
@@ -20,15 +18,12 @@ const cartSchema = new Schema(
     },
     width: {
       type: String,
-      required: true,
     },
     height: {
       type: String,
-      required: true,
     },
     remarks: {
       type: String,
-      required: false,
     },
   },
   { timestamps: true }
