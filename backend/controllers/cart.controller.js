@@ -143,6 +143,7 @@ export const order = async (req, res) => {
 };
 
 export const getAllOrders = async (req, res) => {
+  const { page, limit } = req.query;
   if (!req.session.userId) {
     return res.status(400).json({ err: "You are not logged in" });
   }
@@ -151,7 +152,11 @@ export const getAllOrders = async (req, res) => {
   if (customer.email !== "yajat.kaul@gmail.com") {
     return res.status(400).json({ err: "Unauthorized" });
   }
-  const orders = await Order.find();
+
+  const orders = await Order.find()
+    .sort({ createdAt: -1 })
+    .skip((page - 1) * limit)
+    .limit(parseInt(limit));
 
   res.status(200).json(orders);
 };

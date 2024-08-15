@@ -1,5 +1,6 @@
 import express from "express";
 import cartRoutes from "./routes/cart.routes.js";
+import utilsRoutes from "./routes/utils.routes.js";
 import { configDotenv } from "dotenv";
 import connectToMongoDB from "./db/connectToMongDB.js";
 import authRoute from "./routes/auth.routes.js";
@@ -39,6 +40,8 @@ app.use(
 app.use("/api/auth", authRoute);
 
 app.use("/api/order", cartRoutes);
+
+app.use("/api/utils", utilsRoutes);
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
