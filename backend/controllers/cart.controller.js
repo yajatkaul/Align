@@ -138,7 +138,7 @@ export const order = async (req, res) => {
           Title: newOrder._id,
           field_1: customer.location,
           field_2: customer.phoneNumber.toString(),
-          field_3: customer.email,
+          email: customer.email,
           field_4: customer.type,
           field_5: newOrder.createdAt,
           field_7: item.color || "NA",
