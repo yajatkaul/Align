@@ -137,11 +137,10 @@ export const order = async (req, res) => {
         fields: {
           Title: newOrder._id,
           field_1: customer.location,
-          field_2: customer.phoneNumber,
+          field_2: customer.phoneNumber.toString(),
           field_3: customer.email,
           field_4: customer.type,
           field_5: newOrder.createdAt,
-          field_6: item._id || "NA",
           field_7: item.color || "NA",
           field_8: item.pic || "NA",
           field_9: item.glass || "NA",
@@ -149,8 +148,6 @@ export const order = async (req, res) => {
           field_11: item.width || 0,
           field_12: item.height || 0,
           field_13: item.remarks || "NA",
-          field_14: item.createdAt || "NA",
-          field_15: item.updatedAt || "NA",
         },
       };
 
