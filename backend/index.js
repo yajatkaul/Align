@@ -44,6 +44,7 @@ app.use("/api/order", cartRoutes);
 app.use("/api/utils", utilsRoutes);
 
 app.use("/api/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use("/api/pdfs", express.static(path.join(__dirname, "/assets/pdfs")));
 
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 

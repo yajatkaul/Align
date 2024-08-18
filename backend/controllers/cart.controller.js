@@ -3,6 +3,7 @@ import UserCart from "../models/userCart.model.js";
 import User from "../models/user.model.js";
 import mongoose from "mongoose";
 import Order from "../models/order.model.js";
+import twilio from "twilio";
 
 export const sendCard = async (req, res) => {
   try {
@@ -157,6 +158,7 @@ export const order = async (req, res) => {
       formData.append("client_secret", process.env.client_secret);
       formData.append("scope", process.env.scope);
 
+      sendWhatsApp(customer.phoneNumber);
       const authToken = await fetch(
         "https://login.microsoftonline.com/34e90b5b-f022-45c2-b436-d1afb8bf1344/oauth2/v2.0/token",
         {
@@ -203,4 +205,20 @@ export const getAllOrders = async (req, res) => {
     .limit(parseInt(limit));
 
   res.status(200).json(orders);
+};
+
+const sendWhatsApp = (number) => {
+  const accountSid = process.env.accountSid;
+  const authToken = process.env.authToken;
+  const client = new twilio(accountSid, authToken);
+
+  client.messages
+    .create({
+      from: "whatsapp:+14155238886",
+      body: "Order Confirmation",
+      to: `whatsapp:+91${number}`,
+      mediaUrl: ["https://alignglass.shop/api/pdfs/Booklet_Align 24072024.pdf"],
+    })
+    .then((message) => console.log(message.sid))
+    .catch((err) => console.error(err));
 };
