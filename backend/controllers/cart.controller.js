@@ -115,7 +115,7 @@ export const order = async (req, res) => {
     const cartToAdd = await UserCart.findOne({ user: userId }).populate(
       "items"
     );
-    console.log(cartToAdd);
+
     // Create and save the new order
     const newOrder = new Order({
       user: userId,
@@ -154,14 +154,28 @@ export const order = async (req, res) => {
         },
       };
 
-      // Send JSON payload to the endpoint
-      await fetch(
+      const formData = new FormData();
+      formData.append("grant_type", "client_credentials");
+      formData.append("client_id", process.env.client_id);
+      formData.append("client_secret", process.env.client_secret);
+      formData.append("scope", process.env.scope);
+
+      const authToken = await fetch(
+        "https://login.microsoftonline.com/34e90b5b-f022-45c2-b436-d1afb8bf1344/oauth2/v2.0/token",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const token = await authToken.json();
+      fetch(
         "https://graph.microsoft.com/v1.0/sites/2f1cd2ad-69b8-4ede-b326-cdd9838b04eb,dac56c1a-fd7b-4d8e-a943-9d22add20e39/lists/984554f0-f782-4bf8-9b89-8fbc5b25c917/items/",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.AUTHTOKEN}`,
+            Authorization: `Bearer ${token.access_token}`,
           },
           body: JSON.stringify(jsonPayload),
         }
