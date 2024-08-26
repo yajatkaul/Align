@@ -217,7 +217,7 @@ const sendWhatsApp = (number) => {
       from: "whatsapp:+14155238886",
       body: "Order Confirmation",
       to: `whatsapp:+91${number}`,
-      mediaUrl: ["https://alignglass.shop/api/pdfs/Booklet.pdf"],
+      mediaUrl: ["https://alignglass.shop/api/pdfs/Mirror.pdf"],
     })
     .then((message) => console.log(message.sid))
     .catch((err) => console.error(err));
