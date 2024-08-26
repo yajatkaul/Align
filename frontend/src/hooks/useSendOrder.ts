@@ -1,5 +1,6 @@
 // @ts-nocheck
 import { useState, useEffect } from "react";
+import toast from "react-hot-toast";
 
 const useSendOrder = () => {
   const order = async ({ phoneNumber, type, companyName, location }) => {
@@ -20,6 +21,7 @@ const useSendOrder = () => {
       }
 
       const data = await response.json();
+      toast.success(data.result);
       return data;
     } catch (err) {
       console.log(err);

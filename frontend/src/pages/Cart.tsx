@@ -24,7 +24,6 @@ const Cart = () => {
     e.preventDefault();
 
     await order(details);
-    toast.success("Ordered Successfully");
 
     navigate("/");
   };

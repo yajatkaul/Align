@@ -179,7 +179,7 @@ export const order = async (req, res) => {
       );
     }
 
-    res.status(200).json({ message: "Order processed and JSON data sent." });
+    res.status(200).json({ result: "Order Successful" });
   } catch (error) {
     console.error("Error processing order:", error);
     res.status(500).json({ error: "Internal Server Error" });
