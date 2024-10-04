@@ -52,6 +52,24 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
 });
 
+//
+app.post("/webhook", (req, res) => {
+  const incomingMessage = req.body.Body;
+  const senderNumber = req.body.From;
+
+  // Auto-reply logic
+  const replyMessage = `Hello! Thanks for your message: "${incomingMessage}". We'll get back to you soon!`;
+
+  // Create Twilio MessagingResponse
+  const twiml = new MessagingResponse();
+  twiml.message(replyMessage);
+
+  // Send the auto-reply
+  res.writeHead(200, { "Content-Type": "text/xml" });
+  res.end(twiml.toString());
+});
+//
+
 app.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server has started at http://localhost:${PORT}`);
