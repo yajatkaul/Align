@@ -8,6 +8,8 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import cookieParser from "cookie-parser";
 import path from "path";
+import bodyParser from "body-parser";
+import twilio from "twilio";
 
 const app = express();
 
@@ -61,7 +63,7 @@ app.post("/webhook", (req, res) => {
   const replyMessage = `Hello! Thanks for your message: "${incomingMessage}". We'll get back to you soon!`;
 
   // Create Twilio MessagingResponse
-  const twiml = new MessagingResponse();
+  const twiml = new twilio.twiml.MessagingResponse();
   twiml.message(replyMessage);
 
   // Send the auto-reply
