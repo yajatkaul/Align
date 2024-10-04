@@ -158,7 +158,6 @@ export const order = async (req, res) => {
       formData.append("client_secret", process.env.client_secret);
       formData.append("scope", process.env.scope);
 
-      sendWhatsApp(customer.phoneNumber);
       const authToken = await fetch(
         "https://login.microsoftonline.com/34e90b5b-f022-45c2-b436-d1afb8bf1344/oauth2/v2.0/token",
         {
@@ -180,7 +179,7 @@ export const order = async (req, res) => {
         }
       );
     }
-
+    sendWhatsApp(customer.phoneNumber);
     res.status(200).json({ result: "Order Successful" });
   } catch (error) {
     console.error("Error processing order:", error);
@@ -218,6 +217,15 @@ const sendWhatsApp = (number) => {
       contentVariables: JSON.stringify({
         1: "Thank you for joining us today!",
       }),
+      from: "whatsapp:+14843460368",
+      to: `whatsapp:+91${number}`,
+    })
+    .then((message) => console.log(message))
+    .catch((err) => console.error(err));
+
+  client.messages
+    .create({
+      contentSid: "HXbf7b223b67697eacf80f07641dfc5c29",
       from: "whatsapp:+14843460368",
       to: `whatsapp:+91${number}`,
     })
