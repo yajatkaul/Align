@@ -66,7 +66,7 @@ const DetailCard = ({ name, type, pic }: ProductProps) => {
       phoneNumber: details?.phoneNumber,
       location: details?.location,
       email: details?.email,
-      type: details?.type,
+      type: type,
       color: inputs.color,
       pic: inputs.pic,
       glass: inputs.glass,

@@ -19,6 +19,9 @@ const cartSchema = new Schema(
     width: {
       type: String,
     },
+    type: {
+      type: String,
+    },
     height: {
       type: String,
     },

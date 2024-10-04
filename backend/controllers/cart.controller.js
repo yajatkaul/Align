@@ -9,7 +9,6 @@ export const sendCard = async (req, res) => {
   try {
     const details = req.body;
     const userId = req.session.userId;
-
     // Validate required fields
     if (!details.name) {
       return res.status(400).json({ error: "Fill all the details" });
@@ -28,6 +27,7 @@ export const sendCard = async (req, res) => {
       glass: details.glass,
       pic: details.pic,
       name: details.name,
+      type: details.type,
       width: details.width,
       height: details.height,
       remarks: details.remarks,
@@ -110,13 +110,13 @@ export const deleteCart = async (req, res) => {
 export const order = async (req, res) => {
   try {
     const userId = req.session.userId;
+    const types = [];
 
     // Retrieve customer and cart details
     const customer = await User.findById(userId);
     const cartToAdd = await UserCart.findOne({ user: userId }).populate(
       "items"
     );
-
     // Create and save the new order
     const newOrder = new Order({
       user: userId,
@@ -133,6 +133,9 @@ export const order = async (req, res) => {
 
     // Iterate over each item in the order
     for (const item of cartToAdd.items) {
+      if (!types.includes(item.type)) {
+        types.push(item.type);
+      }
       // Prepare the JSON payload for each item
       const jsonPayload = {
         fields: {
@@ -179,7 +182,7 @@ export const order = async (req, res) => {
         }
       );
     }
-    sendWhatsApp(customer.phoneNumber);
+    sendWhatsApp(customer.phoneNumber, types);
     res.status(200).json({ result: "Order Successful" });
   } catch (error) {
     console.error("Error processing order:", error);
@@ -206,7 +209,8 @@ export const getAllOrders = async (req, res) => {
   res.status(200).json(orders);
 };
 
-const sendWhatsApp = (number) => {
+const sendWhatsApp = (number, types) => {
+  console.log(types);
   const accountSid = process.env.accountSid;
   const authToken = process.env.authToken;
   const client = new twilio(accountSid, authToken);
@@ -220,15 +224,59 @@ const sendWhatsApp = (number) => {
       from: "whatsapp:+14843460368",
       to: `whatsapp:+91${number}`,
     })
-    .then((message) => console.log(message))
     .catch((err) => console.error(err));
 
-  client.messages
-    .create({
-      contentSid: "HXbf7b223b67697eacf80f07641dfc5c29",
-      from: "whatsapp:+14843460368",
-      to: `whatsapp:+91${number}`,
-    })
-    .then((message) => console.log(message))
-    .catch((err) => console.error(err));
+  if (types.includes("Sliding Door")) {
+    client.messages
+      .create({
+        contentSid: "HXd110b042223fef6295236b1b136db31c",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+  }
+  if (types.includes("Swing Door")) {
+    client.messages
+      .create({
+        contentSid: "HX41e6f055762d0da5854075895b803240",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+  }
+  if (types.includes("Shower")) {
+    client.messages
+      .create({
+        contentSid: "HX14c904afdc0e6367361a0221c5fdbf9b",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+  }
+  if (types.includes("Other")) {
+    client.messages
+      .create({
+        contentSid: "HX3199d3701e1de516be4ced984fc23e88",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+  }
+  if (types.includes("Mirror")) {
+    client.messages
+      .create({
+        contentSid: "HX7e207cb2e14e3b25eb3d290dd8d53aa2",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+
+    client.messages
+      .create({
+        contentSid: "HX9e65b5e0c2f7f16e57fe965436791516",
+        from: "whatsapp:+14843460368",
+        to: `whatsapp:+91${number}`,
+      })
+      .catch((err) => console.error(err));
+  }
 };

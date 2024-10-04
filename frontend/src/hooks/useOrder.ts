@@ -4,6 +4,7 @@ const useOrder = () => {
     glass,
     pic,
     name,
+    type,
     width,
     height,
     remarks,
@@ -17,6 +18,7 @@ const useOrder = () => {
           glass: glass,
           pic: pic,
           name: name,
+          type: type,
           width: width,
           height: height,
           remarks: remarks,
@@ -27,7 +29,6 @@ const useOrder = () => {
       if (data.err) {
         throw new Error(data.err);
       }
-
     } catch (err) {
       console.log(err);
     }
