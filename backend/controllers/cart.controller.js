@@ -214,11 +214,13 @@ const sendWhatsApp = (number) => {
 
   client.messages
     .create({
-      from: "whatsapp:+14155238886",
-      body: "Order Confirmation",
+      contentSid: "HX6cfef793c71a47075b40f02caee3729d",
+      contentVariables: JSON.stringify({
+        1: "Thank you for joining us today!",
+      }),
+      from: "whatsapp:+14843460368",
       to: `whatsapp:+91${number}`,
-      mediaUrl: ["https://alignglass.shop/api/pdfs/Mirror.pdf"],
     })
-    .then((message) => console.log(message.sid))
+    .then((message) => console.log(message))
     .catch((err) => console.error(err));
 };
