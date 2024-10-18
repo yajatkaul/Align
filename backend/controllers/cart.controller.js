@@ -225,14 +225,11 @@ const sendWhatsApp = (number, types) => {
     })
     .catch((err) => console.error(err));
 
-  if (types.includes("Sliding Door")) {
-    client.messages
-      .create({
-        contentSid: "HXd110b042223fef6295236b1b136db31c",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
-  }
-
+  client.messages
+    .create({
+      contentSid: "HX6917f77781f33d3f1f840935093692e7",
+      from: "whatsapp:+14843460368",
+      to: `whatsapp:+91${number}`,
+    })
+    .catch((err) => console.error(err));
 };
