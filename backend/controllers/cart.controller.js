@@ -210,14 +210,13 @@ export const getAllOrders = async (req, res) => {
 };
 
 const sendWhatsApp = (number, types) => {
-  console.log(types);
   const accountSid = process.env.accountSid;
   const authToken = process.env.authToken;
   const client = new twilio(accountSid, authToken);
 
   client.messages
     .create({
-      contentSid: "HX6cfef793c71a47075b40f02caee3729d",
+      contentSid: "HX375505cc866a9ce00a980475fc347c02",
       contentVariables: JSON.stringify({
         1: "Thank you for joining us today!",
       }),
@@ -235,48 +234,5 @@ const sendWhatsApp = (number, types) => {
       })
       .catch((err) => console.error(err));
   }
-  if (types.includes("Swing Door")) {
-    client.messages
-      .create({
-        contentSid: "HX41e6f055762d0da5854075895b803240",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
-  }
-  if (types.includes("Shower")) {
-    client.messages
-      .create({
-        contentSid: "HX14c904afdc0e6367361a0221c5fdbf9b",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
-  }
-  if (types.includes("Other")) {
-    client.messages
-      .create({
-        contentSid: "HX3199d3701e1de516be4ced984fc23e88",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
-  }
-  if (types.includes("Mirror")) {
-    client.messages
-      .create({
-        contentSid: "HX7e207cb2e14e3b25eb3d290dd8d53aa2",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
 
-    client.messages
-      .create({
-        contentSid: "HX9e65b5e0c2f7f16e57fe965436791516",
-        from: "whatsapp:+14843460368",
-        to: `whatsapp:+91${number}`,
-      })
-      .catch((err) => console.error(err));
-  }
 };

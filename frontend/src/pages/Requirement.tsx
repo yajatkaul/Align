@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import { IoMdLogOut } from "react-icons/io";
 import useLogout from "../hooks/useLogout";
+import { FaBook } from "react-icons/fa";
 import toast from "react-hot-toast";
 
 const Requirement = () => {
@@ -25,7 +26,18 @@ const Requirement = () => {
     <>
       <div className="flex flex-col h-screen">
         <Header />
-
+        <div className="fixed bottom-[50px] left-[30px]">
+          <a
+            href="https://catalogue.alignglass.shop/home"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="btn">
+              <FaBook />
+              Catalogue
+            </button>
+          </a>
+        </div>
         <div className="flex flex-1 mt-[100px] flex-wrap gap-8 justify-center w-full bg-cover bg-center bg-[url('/api/uploads/bg.jpg')] bg-fixed pl-[30px] pr-[30px] pb-[20px]">
           {categories?.map((category) => {
             return <Card name={category.name} pic={category.image} />;

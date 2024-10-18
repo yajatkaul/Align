@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 import path from "path";
 import bodyParser from "body-parser";
 import twilio from "twilio";
+import ollama from "ollama";
 
 const app = express();
 
@@ -56,16 +57,18 @@ app.get("*", (req, res) => {
 });
 
 //
-app.post("/webhook", (req, res) => {
+app.post("/webhook", async (req, res) => {
   const incomingMessage = req.body.Body;
   const senderNumber = req.body.From;
 
-  // Auto-reply logic
-  const replyMessage = `Hello! Thanks for your message: "${incomingMessage}". We'll get back to you soon!`;
+  const response = await ollama.chat({
+    model: "gemma2:2b",
+    messages: [{ role: "user", content: incomingMessage }],
+  });
 
   // Create Twilio MessagingResponse
   const twiml = new twilio.twiml.MessagingResponse();
-  twiml.message(replyMessage);
+  twiml.message(response.message.content);
 
   // Send the auto-reply
   res.writeHead(200, { "Content-Type": "text/xml" });
